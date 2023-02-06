@@ -5,7 +5,11 @@
 }
 
 body{
-  background: rgb(124, 120, 120);
+  height: 100vh;
+  background: url(./catalog-img/fon.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .settings{
@@ -66,28 +70,30 @@ background: rgb(10 10 10 / 20%);
   position: absolute;
   bottom: 60px;
   right: 0;
-  width: 200px;
+  width: 180px;
   height: 250px;
-  background: url(./catalog-img/settingsfon.jpg);
+  background: rgba(141, 138, 138, 0.25);
+  /* background: url(./catalog-img/settingsfon.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   margin-right: 10px;
   border-radius: 25px;
+  /* opacity: 0.7; */
 }
 
 
 /* ----------player-------------- */
 .box-player-wrapper{
-  width: 100%;
   margin: 10px;
 }
 .box-player{
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .volume-box{
-  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -103,20 +109,19 @@ cursor: pointer;
 }
 
 .volmue{
-  width: 70px;
+  width: 60px;
   height: 5px;
   margin-right: 5px;
   cursor: pointer;
 }
 
 /*-----кнопки состояния*/
-
         .switch-btn {
             display: inline-block;
-            width: 72px;
-            height: 38px; 
+            width: 42px;
+            height: 22px; 
             border-radius: 19px; 
-            background: linear-gradient(to right, #7f7f7f 0, #bfbfbf 40%, #7fd03e 60%, #118c4e 100%);
+            background: linear-gradient(to right, #535252 0, #bfbfbf 40%, #7fd03e 60%, #118c4e 100%);
             background-size: 180px 100%;
             z-index: 0;
             margin: 0;
@@ -128,8 +133,8 @@ cursor: pointer;
         }
         .switch-btn::after {
             content: "";
-            height: 32px; 
-            width: 32px; 
+            height: 16px; 
+            width: 16px; 
             border-radius: 17px;
             background: #fff; 
             top: 3px; 
@@ -142,5 +147,18 @@ cursor: pointer;
             background-position-x: -100px;
         }
         .switch-on::after {
-            left: 37px;
+            left: 22px;
+        }
+
+        .settings-one,
+        .settings-two,
+        .settings-three{
+          display: flex;
+          align-items: center;
+          color: #fff;
+          margin: 5px 10px;
+        }
+
+        .settings-text{
+          margin-right: 10px;
         }

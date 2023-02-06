@@ -4,7 +4,7 @@ const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageEleme
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
-const switchBtn =document.querySelector('.switch-btn') as HTMLElement
+const switchBtn = document.querySelectorAll('.switch-btn');
 
 audio.volume = 0.3
 
@@ -72,6 +72,15 @@ imgPlayPause.addEventListener('click', () => {
   
 })
 
-switchBtn.addEventListener('click', () => {
-  switchBtn.classList.toggle('switch-on')
+switchBtn.forEach(item => {
+  item.addEventListener('click', () => {
+    if (item.classList.contains('switch-one')) {
+      item.classList.toggle('switch-on')
+    } else if (item.classList.contains('switch-two')) {
+      item.classList.toggle('switch-on')
+    }else if (item.classList.contains('switch-three')) {
+      item.classList.toggle('switch-on')
+    }
+  })
 })
+
