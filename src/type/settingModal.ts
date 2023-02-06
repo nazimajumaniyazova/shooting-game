@@ -4,6 +4,7 @@ const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageEleme
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
+const switchBtn =document.querySelector('.switch-btn') as HTMLElement
 
 audio.volume = 0.3
 
@@ -69,4 +70,8 @@ imgPlayPause.addEventListener('click', () => {
     audio.pause();
   }
   
+})
+
+switchBtn.addEventListener('click', () => {
+  switchBtn.classList.toggle('switch-on')
 })
