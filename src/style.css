@@ -3,3 +3,108 @@
   padding: 0;
   margin: 0;
 }
+
+body{
+  background: rgb(124, 120, 120);
+}
+
+.settings{
+  position: absolute;
+  z-index: 6;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: url(./catalog-img/settings.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+  cursor: pointer;
+}
+.settings.active{
+  animation-name: rotation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.settings:hover{
+  animation-name: rotation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotation {
+  0% {
+      transform:rotate(0deg);
+  }
+  100% {
+      transform:rotate(360deg);
+  }
+}
+
+/* ----------modal settings-------------- */
+.wrapper-modal{
+display: none;
+z-index: 5;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgb(10 10 10 / 20%);
+}
+
+.wrapper-modal.active{
+  display: block;
+}
+
+.wrapper-modal__settings{
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 200px;
+  height: 250px;
+  background: url(./catalog-img/settingsfon.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+  border-radius: 25px;
+}
+
+
+/* ----------player-------------- */
+.box-player-wrapper{
+  width: 100%;
+  margin: 10px;
+}
+.box-player{
+  width: 100%;
+}
+
+.volume-box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.img-play-pause{
+width: 30px;
+height: 30px;
+cursor: pointer;
+}
+
+.reg-volume{
+  width: 40px;
+  height: 40px;
+}
+
+.volmue{
+  width: 70px;
+  height: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
