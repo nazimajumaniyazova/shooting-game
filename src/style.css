@@ -68,3 +68,9 @@ body {
     opacity: 1;
   }
 }
+#canvas1 {
+  border: 1px solid #000;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
