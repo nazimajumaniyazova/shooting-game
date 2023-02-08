@@ -52,7 +52,7 @@ body{
 
 /* ----------modal settings-------------- */
 .wrapper-modal{
-display: none;
+display: block;
 z-index: 5;
 position: fixed;
 top: 0;
@@ -63,7 +63,7 @@ background: rgb(10 10 10 / 20%);
 }
 
 .wrapper-modal.active{
-  display: block;
+  display: none;
 }
 
 .wrapper-modal__settings{
@@ -164,39 +164,66 @@ cursor: pointer;
         }
 
 /*----------------------разметка для подсказок-------------------*/
-/* .help-game{
+/* .help-fon{
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
+  z-index: 2;
+}
+.fon-heart img{
+  width: 25px;
+  height: 25px;
 }
 
-.row{
-  height: 25%;
-  border: 1px solid;
-  display: flex;
+.fon-enemy img{
+  width: 60px;
 }
 
-.colum{
-  width: 25%;
-  height: 100%;
-  border: 1px solid;
-  background: rgb(0, 0, 0, 0.8);
+.fon-player img{
+  width: 50%;
+  display: inline;
+}
+.fon-heart,
+.fon-enemy,
+.fon-player{
+  position: absolute;
 }
 
-.colum-player-top,
-.colum-player-buttom{
-  background: none;
+.fon-heart{
+  top: 0;
+  right: 0;
+  margin: 7px;
 }
 
-.colum-player-top:active{
-  background: rgb(0, 0, 0, 0.8);
+.fon-enemy{
+  top: 200px;
+  right: 150px;
+  margin: 7px;
 }
-.colum-player-buttom:active{
-  background: rgb(0, 0, 0, 0.8);
-} */
+
+.fon-player{
+  left: 0;
+  top: 25%;
+  margin: 7px;
+}
+
+.fon-player-text{
+  display: table;
+border: 1px solid #fff;
+border-radius: 5px;
+background: #fff;
+}
+
+.fon-settings{
+  position: absolute;
+  bottom: 60px;
+  right: 100px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: #fff;
+}
 
 
     table.help-block{
@@ -212,27 +239,87 @@ cursor: pointer;
   
 
     table.help-block th {
-      background: #347c99; 
       color: #fff; 
       font-weight: normal;
     }
 
-    table.help-block td{
+    table.help-block div{
       background: rgb(0, 0, 0, 0.8);
     }
 
-    table.help-block td.help-player{
+    table.help-block div.help-player{
       background: none;
     }
 
-    table.help-block td.help-player{
+    table.help-block div.help-player{
       border: 1px solid none;
-    }
+    } */
 
-    .test{
-      width: 100%;
-      height: 100%;
-      background: #118c4e;
-      border-radius: 50%;
-    }
 
+
+
+/*----------------------попытка 100-------------------*/
+
+.wrapper-blok-help,
+.wrapper-blok-help-copy{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.colum-block{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 100%;
+}
+
+.colum-block3{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+}
+.colum-block4{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+}
+
+.col{
+  border: 1px solid #fff;
+  width: 100%;
+  height: 25%;
+}
+
+.col1-2{
+  height: 50%;
+}
+.col1-3{
+  height: 0%;
+}
+
+.img-heart img{
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin: 3px;
+}
+
+.fon-text{
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.wrapper-blok-help-copy{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.col-copy{
+  background: rgb(0, 0, 0, 0.5);
+}
