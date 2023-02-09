@@ -1,7 +1,7 @@
 import { createHTMLElement, getPlayerData, Hero } from "./utils";
 
 export function renderHeroChoisePage() {
-  const gameField = document.querySelector('.container') as HTMLElement;
+  const gameField = createHTMLElement('div', 'gameField');
   const container = createHTMLElement('div', 'heroes');
   const instructions = createHTMLElement('h2', 'instructions-heading');
   instructions.innerHTML = 'Select Player then press Enter';
@@ -18,7 +18,8 @@ export function renderHeroChoisePage() {
   femalePlayerContainer.dataset.type = 'female';
   femalePlayerContainer.append(femaleHero);
   container.append(instructions, malePlayerContainer, femalePlayerContainer);
-  gameField?.append(container)
+  gameField?.append(container);
+  document.body.append(gameField);
 }
 
 export function renderGameField() {
