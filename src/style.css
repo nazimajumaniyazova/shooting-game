@@ -3,3 +3,135 @@
   padding: 0;
   margin: 0;
 }
+body {
+  background-color: #1E1E1E;
+  color: #fff;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container-top {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.container-bottom {
+  height: 50vh;
+}
+.welcome-text {
+ font-size: 4rem;
+ animation-name: elementAppearing;
+ animation-duration: 2s;
+}
+.game-name{
+  font-size: 4rem;
+  text-transform: uppercase;
+  animation-name: elementAppearing;
+  animation-duration: 2s;
+}
+.start-btn {
+  font-size: 2em;
+  cursor: pointer;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.press-enter {
+ color: rgba(255, 255, 255, .6);
+ display: none;
+}
+.start-btn.display-on{
+  display: block;
+}
+.press-enter.display-on{
+  display: block;
+}
+@keyframes elementAppearing{
+  from {
+    font-size: 0;
+    opacity: 0;
+  }
+  to {
+    font-size: 4rem;
+    opacity: 1;
+  }
+}
+#canvas1 {
+  border: 1px solid #000;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+/* Typing Style */
+.sentence{
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.typing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.typing-container__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 42px;
+  margin-left: 8px;
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+}
+/* .typing-cursor{
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+} */
+@keyframes blink {
+  0% {opacity: 1;}
+  40% {opacity: 1;}
+  60% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.skip-btn {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+}
+/* End Typing Styling */
