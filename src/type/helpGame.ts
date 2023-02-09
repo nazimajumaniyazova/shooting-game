@@ -49,7 +49,7 @@ const wrapperBlokHelp = () => {
     saction.innerHTML = block;
     document.body.appendChild(saction);
 }
-wrapperBlokHelp();
+// wrapperBlokHelp();
 
 const wrapperBlokHelpCopy = () => {
   const block = `  <div class="colum-block">
@@ -85,7 +85,7 @@ const wrapperBlokHelpCopy = () => {
     saction.innerHTML = block;
     document.body.appendChild(saction);
 }
-wrapperBlokHelpCopy();
+// wrapperBlokHelpCopy();
 
 function clickBlockHelp() {
   const divBlock = document.querySelectorAll('.col-copy')
@@ -136,4 +136,4 @@ function clickBlockHelp() {
   })
 }
 
-clickBlockHelp()
+// clickBlockHelp()
