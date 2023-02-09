@@ -12,6 +12,7 @@ body {
   background-color: transparent;
   font-family: inherit;
   color: inherit;
+  cursor: pointer;
 }
 .container {
   position: absolute;
@@ -24,6 +25,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.container-top {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.container-bottom {
+  height: 50vh;
 }
 .welcome-text {
  font-size: 4rem;
@@ -74,3 +84,54 @@ body {
   top: 10px;
   left: 100px;
 }
+
+/* Typing Style */
+.sentence{
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.typing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.typing-container__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 42px;
+  margin-left: 8px;
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+}
+/* .typing-cursor{
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+} */
+@keyframes blink {
+  0% {opacity: 1;}
+  40% {opacity: 1;}
+  60% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.skip-btn {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+}
+/* End Typing Styling */

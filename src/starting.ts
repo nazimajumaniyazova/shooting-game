@@ -1,28 +1,36 @@
-function welcome() {
-  const container = createNode('div', 'container');
-  document.body.append(container);
+const container = document.querySelector('.container') as HTMLElement;
+welcome()
+function welcome() {  
+  const containertTop = createNode('div', 'container-top');
+  container.append(containertTop);
 
   const welcomeText = createNode('p', 'welcome-text');
   welcomeText.innerText = 'Welcome';
-  container.append(welcomeText);
+  containertTop.append(welcomeText);
 
   const gameName = createNode('div', 'game-name');
   gameName.innerText = 'Savior';
-  container.append(gameName);
+  containertTop.append(gameName);
+
+  const containerBottom = createNode('div', 'container-bottom');
+  container.append(containerBottom);
 
   const startBtn = createNode('button', ['start-btn', 'btn']);
   startBtn.innerText = 'start';
-  container.append(startBtn);
+  containerBottom.append(startBtn);
 
   const pressEnter = createNode('p', 'press-enter');
   pressEnter.innerText = 'or press Enter';
-  container.append(pressEnter);
+  containerBottom.append(pressEnter);
   
   setTimeout(() => {
     startBtn.classList.add('display-on');
     pressEnter.classList.add('display-on');
   }, 2000)
-  startBtn.addEventListener('click', onStartBtnClick)
+
+  startBtn.addEventListener('click', onStartBtnClick);
+
+  window.addEventListener('keydown', onStartBtnClick);
 }
 
 function createNode(tagName: string, classes: Array<string> | string) {
@@ -37,18 +45,58 @@ function createNode(tagName: string, classes: Array<string> | string) {
   return node;
 }
 
-function onStartBtnClick(this: HTMLElement, event: Event) {
-  const container = this.closest('.container') as HTMLElement;
+function onStartBtnClick() {
   container.innerHTML = '';
-  console.log(container)
-  console.log(event)
+  typeGameStory()
+  displaySkipBtn()
 }
 
-// function startingStory() {
+function crateTypingItem() {
+  const typingItem = createNode('div', 'typing-container__item');
+  const sentence = createNode('span', 'sentence');
+  const inputCursor = createNode('span', 'input-cursor');
+ 
+  typingItem.append(sentence)
+  typingItem.append(inputCursor);
 
-// }
-welcome()
+  return typingItem;
+}
+async function typeSentence(sentence: string, eleRef: HTMLElement, delay = 100){
+  const letters = sentence.split('')
+  let i = 0
+  while(i<letters.length){
+      await waitForMs(delay);
+      eleRef.append(letters[i])
+      i++
+  }
+  return
+}
+function waitForMs(ms: number){
+  return new Promise(resolve =>setTimeout(resolve,ms))
+}
+async function typeGameStory(){
+  const gameStoryText = ['3023 year', 'The Earth is attacked by giant insects from outer space!', 'Your mission is to eliminate invaders and save the planet.', 'You have been chosen to accomplish this mission.'];
+  for (const item of gameStoryText) {
+    const typingItem = crateTypingItem();
+    container.append(typingItem);
+    const sentence = typingItem?.querySelector('.sentence') as HTMLElement;
+    await typeSentence(item, sentence);
+    const cursor =   typingItem.querySelector('.input-cursor ') as HTMLElement;
+    cursor.style.visibility = 'hidden';
+  }
+}
 
+function displaySkipBtn() {
+  const skipBtn = createNode('button', ['skip-btn','btn'])
+  skipBtn.innerHTML = 'Skip';
+  container.append(skipBtn);
+
+  skipBtn.addEventListener('click', onSkipBtnClick)
+}
+
+function onSkipBtnClick() {
+  container.remove();
+}
 const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 
