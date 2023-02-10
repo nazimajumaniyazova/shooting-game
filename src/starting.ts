@@ -1,3 +1,4 @@
+import { chooseHero, confirmHero } from "./choose-hero";
 import { renderHeroChoisePage } from "./render";
 
 const container = document.querySelector('.container') as HTMLElement;
@@ -98,8 +99,12 @@ function displaySkipBtn() {
 
 function onSkipBtnClick() {
   container.remove();
-  renderHeroChoisePage()
 
+  // Отрисовка страницы выбора и последующие обработчики событий
+
+  renderHeroChoisePage()
+  document.body.addEventListener('keydown', chooseHero);
+  document.body.addEventListener('keydown', confirmHero);
 }
 const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');

@@ -8,7 +8,7 @@ export function renderHeroChoisePage() {
   const maleHero = createHTMLElement('img', 'choose-male-hero') as HTMLImageElement;
   maleHero.src = './catalog-img/male.png';
   maleHero.style.width = '120px';
-  const malePlayerContainer = createHTMLElement('div', ['boy', 'active']);
+  const malePlayerContainer = createHTMLElement('div', ['boy', 'hero-active']);
   malePlayerContainer.dataset.type = 'male';
   malePlayerContainer.append(maleHero);
   const femaleHero = createHTMLElement('img', 'choose-female-hero') as HTMLImageElement;
@@ -23,14 +23,14 @@ export function renderHeroChoisePage() {
 }
 
 export function renderGameField() {
-  const container = document.querySelector('.container');
+  const gameField = document.querySelector('.game-field');
   const playerData = getPlayerData();
-  container?.append(renderHero(playerData))
+  gameField?.append(renderHero(playerData))
 }
-
 
 export function renderHero(player: Hero) {
   const hero = createHTMLElement('div', 'player');
-  hero.style.backgroundImage = `url(./../catalog-img/${player.skin}.png)`;
+  hero.style.backgroundImage = `url(${player.skin})`;
+  if (player.name === 'Julie') hero.classList.add('player-2');
   return hero;
 }
