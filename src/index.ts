@@ -9,5 +9,3 @@ import './type/helpGame.css'
 
 // import './starting';
 import './choose-hero';
-
-

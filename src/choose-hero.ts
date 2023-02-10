@@ -47,8 +47,7 @@ export function confirmHero(e: KeyboardEvent) {
 
     // 3. Add Event listener to move Hero
 
-    document.body.addEventListener('keydown', moveHero)
+    document.body.addEventListener('keydown', moveHero);
   }
-
 
 }

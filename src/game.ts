@@ -94,8 +94,10 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
           enemy.className = 'boom';
           enemy.style.top = (topE - 10) + 'px';
           enemy.style.left = (leftE - 10) + 'px';
+
           const id = enemy.dataset.timer as unknown as NodeJS.Timer;
           clearInterval(id);
+          
           setTimeout(function() {
             enemy.remove();
             createEnemy();
