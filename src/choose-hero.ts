@@ -1,7 +1,7 @@
-import { renderHeroChoisePage } from "./render";
+// import { renderHeroChoisePage } from "./render";
 import {Player} from "./utils";
 
-renderHeroChoisePage();
+// renderHeroChoisePage();
 
 document.body.addEventListener('keydown', (e: KeyboardEvent) => {
   if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowLeft'  || e.code === 'ArrowRight') {
