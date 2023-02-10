@@ -81,13 +81,13 @@
 	}
 }
 
-.player {
+.hero {
   height: 123px;
   width: 100px;
   position: absolute;
-  top: calc(50% - 110px);
+  top: 250px;
   left: 50px;
-    -webkit-transition:  all 0.2s;
+  -webkit-transition:  all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
 	transition-timing-function: linear;
@@ -95,7 +95,7 @@
 	background-position: center center
 }
 
-.player.player-2 {
+.hero.hero-2 {
 	height: 123px;
   width: 124px;
 }

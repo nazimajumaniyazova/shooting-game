@@ -1,10 +1,10 @@
 import { renderGameField,  renderHeroChoisePage} from "./render";
 import {Player} from "./utils";
+import {moveHero} from './game';
 
 renderHeroChoisePage()
 document.body.addEventListener('keydown', chooseHero);
 document.body.addEventListener('keydown', confirmHero);
-
 
 export function chooseHero(e: KeyboardEvent) {
   if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowLeft'  || e.code === 'ArrowRight') {
@@ -44,8 +44,11 @@ export function confirmHero(e: KeyboardEvent) {
 
     // 2. Render gamefield (hero, enemy, hearts)
     renderGameField();
+
+    // 3. Add Event listener to move Hero
+
+    document.body.addEventListener('keydown', moveHero)
   }
 
-  
 
 }

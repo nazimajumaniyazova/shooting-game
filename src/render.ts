@@ -29,9 +29,9 @@ export function renderGameField() {
 }
 
 export function renderHero(player: Hero) {
-  const hero = createHTMLElement('div', 'player');
+  const hero = createHTMLElement('div', 'hero');
   hero.style.backgroundImage = `url(${player.skin})`;
-  if (player.name === 'Julie') hero.classList.add('player-2');
+  if (player.name === 'Julie') hero.classList.add('hero-2');
   return hero;
 }
 
