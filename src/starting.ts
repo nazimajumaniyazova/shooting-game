@@ -1,3 +1,5 @@
+import { renderHeroChoisePage } from "./render";
+
 const container = document.querySelector('.container') as HTMLElement;
 welcome()
 function welcome() {  
@@ -96,6 +98,8 @@ function displaySkipBtn() {
 
 function onSkipBtnClick() {
   container.remove();
+  renderHeroChoisePage()
+
 }
 const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');

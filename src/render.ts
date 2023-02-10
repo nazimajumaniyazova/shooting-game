@@ -1,7 +1,7 @@
 import { createHTMLElement, getPlayerData, Hero } from "./utils";
 
 export function renderHeroChoisePage() {
-  const gameField = createHTMLElement('div', 'gameField');
+  const gameField = createHTMLElement('div', 'game-field');
   const container = createHTMLElement('div', 'heroes');
   const instructions = createHTMLElement('h2', 'instructions-heading');
   instructions.innerHTML = 'Select Player then press Enter';
