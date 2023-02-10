@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
 }
+
 body {
   background-color: #1E1E1E;
   color: #fff;
@@ -134,4 +135,3 @@ body {
   height: 50px;
   font-size: 2rem;
 }
-/* End Typing Styling */

@@ -1,0 +1,150 @@
+/* ----------modal settings-------------- */
+.settings{
+  position: absolute;
+  z-index: 6;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: url(../catalog-img/settings.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+  cursor: pointer;
+}
+.settings.active{
+  animation-name: rotation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.settings:hover{
+  animation-name: rotation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotation {
+  0% {
+      transform:rotate(0deg);
+  }
+  100% {
+      transform:rotate(360deg);
+  }
+}
+
+.wrapper-modal{
+  display: block;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(10 10 10 / 20%);
+  }
+  
+  .wrapper-modal.active{
+    display: none;
+  }
+  
+  .wrapper-modal__settings{
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 180px;
+    height: 250px;
+    background: rgba(141, 138, 138, 0.25);
+    /* background: url(./catalog-img/settingsfon.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    margin-right: 10px;
+    border-radius: 25px;
+    /* opacity: 0.7; */
+  }
+  
+  
+  /* ----------player-------------- */
+  .box-player-wrapper{
+    margin: 10px;
+  }
+  .box-player{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .volume-box{
+    display: flex;
+    align-items: center;
+  }
+  .img-play-pause{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  }
+  
+  .reg-volume{
+    width: 40px;
+    height: 40px;
+  }
+  
+  .volmue{
+    width: 60px;
+    height: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  /*-----кнопки состояния*/
+          .switch-btn {
+              display: inline-block;
+              width: 42px;
+              height: 22px; 
+              border-radius: 19px; 
+              background: linear-gradient(to right, #535252 0, #bfbfbf 40%, #7fd03e 60%, #118c4e 100%);
+              background-size: 180px 100%;
+              z-index: 0;
+              margin: 0;
+              padding: 0;
+              border: none;
+              cursor: pointer;
+              position: relative;
+              transition-duration: 300ms; 
+          }
+          .switch-btn::after {
+              content: "";
+              height: 16px; 
+              width: 16px; 
+              border-radius: 17px;
+              background: #fff; 
+              top: 3px; 
+              left: 3px; 
+              transition-duration: 300ms; 
+              position: absolute;
+              z-index: 1;
+          }
+          .switch-on {
+              background-position-x: -100px;
+          }
+          .switch-on::after {
+              left: 22px;
+          }
+  
+          .settings-one,
+          .settings-two,
+          .settings-three{
+            display: flex;
+            align-items: center;
+            color: #fff;
+            margin: 5px 10px;
+          }
+  
+          .settings-text{
+            margin-right: 10px;
+          }
