@@ -7,7 +7,7 @@ import './type/helpGame.ts'
 import './type/helpGame.css'
 
 
-import './starting';
+// import './starting';
 import './choose-hero';
 
 

@@ -1,4 +1,4 @@
-import { createHTMLElement, getPlayerData, Hero } from "./utils";
+import { createHTMLElement, getPlayerData, Hero, randomInteger } from "./utils";
 
 export function renderHeroChoisePage() {
   const gameField = createHTMLElement('div', 'game-field');
@@ -25,7 +25,7 @@ export function renderHeroChoisePage() {
 export function renderGameField() {
   const gameField = document.querySelector('.game-field');
   const playerData = getPlayerData();
-  gameField?.append(renderHero(playerData))
+  gameField?.append(renderHero(playerData), renderEnemy())
 }
 
 export function renderHero(player: Hero) {
@@ -33,4 +33,10 @@ export function renderHero(player: Hero) {
   hero.style.backgroundImage = `url(${player.skin})`;
   if (player.name === 'Julie') hero.classList.add('player-2');
   return hero;
+}
+
+export function renderEnemy() {
+  const enemy = createHTMLElement('div', 'enemy');
+  enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
+  return enemy;
 }

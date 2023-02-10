@@ -1,9 +1,9 @@
-import { renderGameField,  } from "./render";
+import { renderGameField,  renderHeroChoisePage} from "./render";
 import {Player} from "./utils";
 
-// renderHeroChoisePage()
-// document.body.addEventListener('keydown', chooseHero);
-// document.body.addEventListener('keydown', confirmHero);
+renderHeroChoisePage()
+document.body.addEventListener('keydown', chooseHero);
+document.body.addEventListener('keydown', confirmHero);
 
 
 export function chooseHero(e: KeyboardEvent) {
@@ -27,6 +27,8 @@ export function confirmHero(e: KeyboardEvent) {
 
   if (e.code === 'Enter') {
 
+    // 1. Confirm Hero
+
     const target = document.querySelector('.hero-active') as HTMLElement;
     const skin = target.dataset.type as string;
     if (skin === 'male') {
@@ -40,7 +42,8 @@ export function confirmHero(e: KeyboardEvent) {
     const container = document.querySelector('.game-field');
     if (container) container.innerHTML = '';
 
-    renderGameField()
+    // 2. Render gamefield (hero, enemy, hearts)
+    renderGameField();
   }
 
   

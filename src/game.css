@@ -99,3 +99,12 @@
 	height: 123px;
   width: 124px;
 }
+
+.enemy {
+	background-image: url('./catalog-img/fly-1.png');
+	width: 66px;
+  height: 64px;
+	position: absolute;
+	background-size: cover;
+	right: 15px;
+}
