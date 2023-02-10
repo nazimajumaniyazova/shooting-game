@@ -113,6 +113,16 @@ body {
 	right: 15px;
 }
 
+.boom {
+	background-image: url('./catalog-img/explosion.gif');
+	background-size: contain;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+}
+
 .bullet {
   width: 30px;
   height: 10px;

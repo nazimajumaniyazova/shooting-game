@@ -43,7 +43,7 @@ function moveBullet(bullet: HTMLDivElement) {
   const timerId = setInterval(function() {
     bullet.style.left = bullet.offsetLeft + 10 + 'px';
 
-    // isShot(bullet, timerId);
+    isShot(bullet, timerId);
 
     if(bullet.offsetLeft > document.body.clientWidth) {
       bullet.remove();
@@ -72,6 +72,36 @@ export function createEnemy() {
     // isDie()
 
   }, 100)
+
+  enemy.dataset.timer = String(timerId);
+}
+
+function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
+
+  const topB = bullet.offsetTop;
+  // const bottomB = bullet.offsetTop + bullet.offsetHeight;
+
+  const enemy = document.querySelector('.enemy') as HTMLDivElement;
+
+  if (enemy != null) {
+    const topE = enemy.offsetTop;
+    const bottomE = enemy.offsetTop + enemy.offsetHeight;
   
-  return enemy;
+    const leftB = bullet.offsetLeft;
+    const leftE = enemy.offsetLeft;
+  
+      if(topB >= topE && topB <= bottomE && leftB >= leftE) {
+          enemy.className = 'boom';
+          enemy.style.top = (topE - 10) + 'px';
+          enemy.style.left = (leftE - 10) + 'px';
+          const id = enemy.dataset.timer as unknown as NodeJS.Timer;
+          clearInterval(id);
+          setTimeout(function() {
+            enemy.remove();
+            createEnemy();
+            bullet.remove();
+            clearInterval(timer)
+          }, 400)
+      }
+  }
 }
