@@ -1,5 +1,13 @@
+const blockHelp = () => {
+  const sactionHelp = <HTMLElement>document.createElement('div');
+  sactionHelp.classList.add('block-help')
+  document.body.appendChild(sactionHelp);
+}
+blockHelp()
+
 const wrapperBlokHelp = () => {
   const block = `
+  <div class="wrapper-blok-help">
   <div class="colum-block">
   <div class="col col1-1"></div>
   <div class="col col1-2">
@@ -40,16 +48,18 @@ const wrapperBlokHelp = () => {
     </div>
     <div class="col"></div>
     <div class="col col4-4">
+      <img src="./catalog-img/settings.png" alt="#" class="settings-help-img">
       <span class="fon-text fon-text-settings">Settings</span>
     </div>
+</div>
 </div>`
 
   const saction = <HTMLElement>document.createElement('div');
-    saction.classList.add('wrapper-blok-help')
+    saction.classList.add('wrapper-blok-back')
     saction.innerHTML = block;
     document.body.appendChild(saction);
 }
-// wrapperBlokHelp();
+
 
 const wrapperBlokHelpCopy = () => {
   const block = `  <div class="colum-block">
@@ -85,7 +95,7 @@ const wrapperBlokHelpCopy = () => {
     saction.innerHTML = block;
     document.body.appendChild(saction);
 }
-// wrapperBlokHelpCopy();
+
 
 function clickBlockHelp() {
   const divBlock = document.querySelectorAll('.col-copy')
@@ -130,10 +140,22 @@ function clickBlockHelp() {
         helpEmeny.dataset.click = 'false'
         helpSettings.style.cursor = 'auto';
         fontextSettings.style.display = 'none'
+        document.querySelector('.wrapper-blok-help-copy')?.addEventListener('click', () => {
+          document.body.innerHTML = ''
+        })
       }
 
     })
   })
 }
 
-// clickBlockHelp()
+
+
+const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
+elementBlockHelp.addEventListener('click', () => {
+  document.body.innerHTML = ''
+  wrapperBlokHelp();
+  wrapperBlokHelpCopy();
+  clickBlockHelp()
+})
+
