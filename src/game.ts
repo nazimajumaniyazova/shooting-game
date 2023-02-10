@@ -1,4 +1,4 @@
-import { createHTMLElement } from "./utils";
+import { createHTMLElement, randomInteger } from "./utils";
 
 export function moveHero(e: KeyboardEvent) {
   const hero = document.querySelector('.hero') as HTMLDivElement;
@@ -39,24 +39,39 @@ function createBullet() {
 }
 
 function moveBullet(bullet: HTMLDivElement) {
-  // const destination = window.innerWidth;
-  const gameField = document.querySelector('.game-field') as HTMLDivElement 
+  
+  const timerId = setInterval(function() {
+    bullet.style.left = bullet.offsetLeft + 10 + 'px';
 
-  const bulletKeyFrame = new KeyframeEffect(
-    bullet,
-    [
-      { left: bullet.style.left },
-      { left: gameField.clientWidth + 'px' } 
-    ],
-    { duration: 1000, fill: 'forwards' }
-  );
+    // isShot(bullet, timerId);
 
-  const bulletAnimation = new Animation(bulletKeyFrame, document.timeline);
-  bulletAnimation.play();
-  console.log(bullet.style.left)
-  if(parseInt(bullet.style.left) > document.body.clientWidth) {
-    // bullet.remove();
-    console.log('hey')
-  }
+    if(bullet.offsetLeft > document.body.clientWidth) {
+      bullet.remove();
+      clearInterval(timerId);
+    }
+  }, 10)
 
+}
+
+export function createEnemy() {
+  const gameField = document.querySelector('.game-field');
+  const enemy = createHTMLElement('div', 'enemy');
+  enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
+  gameField?.append(enemy);
+  
+  const timerId = setInterval(function() {
+    enemy.style.left = (enemy.offsetLeft - 10) + 'px';
+    if (enemy.offsetLeft + enemy.offsetWidth < 0) {
+      enemy.remove();
+      clearInterval(timerId);
+      createEnemy();
+
+      // die();
+    }
+
+    // isDie()
+
+  }, 100)
+  
+  return enemy;
 }
