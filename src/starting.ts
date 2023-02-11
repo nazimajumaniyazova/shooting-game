@@ -2,7 +2,8 @@ import { renderHeroChoisePage } from "./render";
 
 const container = document.querySelector('.container') as HTMLElement;
 welcome()
-function welcome() {  
+function welcome() {
+  let isTypingStoryActive = false;  
   const containertTop = createNode('div', 'container-top');
   container.append(containertTop);
 
@@ -32,7 +33,14 @@ function welcome() {
 
   startBtn.addEventListener('click', onStartBtnClick);
 
-  window.addEventListener('keydown', onStartBtnClick);
+  window.addEventListener('keydown', (event: KeyboardEvent) => {
+    if(event.key === 'Enter' && !isTypingStoryActive) {
+      onStartBtnClick()
+      isTypingStoryActive = true;
+      window.removeEventListener('keydown', onSkipBtnClick)
+    }
+    return;
+  });
 }
 
 function createNode(tagName: string, classes: Array<string> | string) {
