@@ -27,6 +27,7 @@ export function renderGameField() {
   const gameField = document.querySelector('.game-field');
   const playerData = getPlayerData();
   gameField?.append(renderHero(playerData));
+  renderHearts()
   const number = randomInteger(2, 4);
   setInterval(()=>{
     for (let i = 0; i < number; i++) {
@@ -48,4 +49,17 @@ export function renderEnemy() {
   const enemy = createHTMLElement('div', 'enemy');
   enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
   return enemy;
+}
+
+export function renderHearts() {
+  const gameField = document.querySelector('.game-field');
+  const heartContainer = createHTMLElement('div', 'lives');
+  const playerData = getPlayerData();
+
+  for(let i = 0; i < playerData.lives; i++) {
+    const heart = createHTMLElement('span', 'heart');
+    heartContainer.append(heart);
+  }
+
+  gameField?.append(heartContainer)
 }

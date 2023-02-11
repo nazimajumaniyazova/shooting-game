@@ -1,5 +1,5 @@
 body {
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .game-field {
@@ -136,4 +136,22 @@ body {
   z-index: 5;
   /* transition-property: all;
 	transition-duration: 5s; */
+}
+
+.lives {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+	/* width: 140px;
+	height: 40px */
+}
+
+.heart {
+  display: block;
+  margin: 10px;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background-image: url('./catalog-img/heart.png');
+  background-size: cover;
 }

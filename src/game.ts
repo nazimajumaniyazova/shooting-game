@@ -1,4 +1,4 @@
-import { createHTMLElement, randomInteger } from "./utils";
+import { createHTMLElement, getPlayerData, randomInteger } from "./utils";
 
 export function moveHero(e: KeyboardEvent) {
   const hero = document.querySelector('.hero') as HTMLDivElement;
@@ -65,13 +65,9 @@ export function createEnemy() {
     if (enemy.offsetLeft + enemy.offsetWidth < 0) {
       enemy.remove();
       clearInterval(timerId);
-      // createEnemy();
-
       // die();
     }
-
-    // isDie()
-
+    isDie()
   }, 100)
 
   enemy.dataset.timer = String(timerId);
@@ -110,4 +106,54 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
       }
   });
 
+}
+
+export function die() {
+  const playerData = getPlayerData();
+  playerData.lives--;
+
+  localStorage.removeItem('player');
+  localStorage.setItem('player', JSON.stringify(playerData));
+  
+  if(playerData.lives != 0) {
+    const livesBlock = document.querySelector('.lives') as HTMLDivElement;
+    const life = livesBlock.querySelector('span') as HTMLSpanElement;
+    life.remove();
+  } else {
+    EndGame()
+  }
+  
+}
+
+export function isDie() {
+  const player = document.querySelector('.hero') as HTMLDivElement;
+  const enemies = Array.from(document.querySelectorAll('.enemy') as NodeListOf<HTMLDivElement>);
+
+  enemies.forEach(enemy => {
+
+    if (enemy.offsetTop > player.offsetTop && 
+      enemy.offsetTop < player.offsetTop + player.offsetHeight &&
+      enemy.offsetLeft <= player.offsetLeft + player.offsetWidth) {
+        // boom!
+        enemy.className = 'boom';
+            enemy.style.top = (player.offsetTop + 50) + 'px';
+            enemy.style.left = (player.offsetLeft + 50) + 'px';
+            const id = enemy.dataset.timer as unknown as NodeJS.Timer;
+            clearInterval(id);
+            setTimeout(function() {
+              enemy.remove();
+              // createEnemy();
+              // clearInterval(timer)
+            }, 400)
+  
+            // die!
+        die()
+      }
+
+  })
+  
+}
+
+function EndGame() {
+  document.body.innerHTML = 'Game Over!';
 }
