@@ -45,7 +45,10 @@ export function confirmHero(e: KeyboardEvent) {
     // 2. Render gamefield (hero, enemy, hearts)
     renderGameField();
 
-    // 3. Add Event listener to move Hero
+    // 3. Remove confirm hero event listener
+    document.body.removeEventListener('keydown', confirmHero)
+
+    // 4. Add Event listener to move Hero
 
     document.body.addEventListener('keydown', moveHero);
   }

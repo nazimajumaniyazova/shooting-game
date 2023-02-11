@@ -27,7 +27,14 @@ export function renderGameField() {
   const gameField = document.querySelector('.game-field');
   const playerData = getPlayerData();
   gameField?.append(renderHero(playerData));
-  createEnemy()
+  const number = randomInteger(2, 4);
+  setInterval(()=>{
+    for (let i = 0; i < number; i++) {
+      gameField?.append(createEnemy());
+    }
+  }, 3000);
+  // createEnemy()
+  
 }
 
 export function renderHero(player: Hero) {

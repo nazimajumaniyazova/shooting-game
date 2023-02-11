@@ -54,17 +54,18 @@ function moveBullet(bullet: HTMLDivElement) {
 }
 
 export function createEnemy() {
-  const gameField = document.querySelector('.game-field');
+  // const gameField = document.querySelector('.game-field');
   const enemy = createHTMLElement('div', 'enemy');
+  const speed = randomInteger(10, 20);
   enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
-  gameField?.append(enemy);
+  // gameField?.append(enemy);
   
   const timerId = setInterval(function() {
-    enemy.style.left = (enemy.offsetLeft - 10) + 'px';
+    enemy.style.left = (enemy.offsetLeft - speed) + 'px';
     if (enemy.offsetLeft + enemy.offsetWidth < 0) {
       enemy.remove();
       clearInterval(timerId);
-      createEnemy();
+      // createEnemy();
 
       // die();
     }
@@ -74,6 +75,7 @@ export function createEnemy() {
   }, 100)
 
   enemy.dataset.timer = String(timerId);
+  return enemy;
 }
 
 function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
@@ -81,15 +83,16 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
   const topB = bullet.offsetTop;
   // const bottomB = bullet.offsetTop + bullet.offsetHeight;
 
-  const enemy = document.querySelector('.enemy') as HTMLDivElement;
+  // const enemy = document.querySelector('.enemy') as HTMLDivElement;
+  const enemies = Array.from(document.querySelectorAll('.enemy') as NodeListOf<HTMLDivElement>);
 
-  if (enemy != null) {
+  enemies.forEach(enemy => {
     const topE = enemy.offsetTop;
     const bottomE = enemy.offsetTop + enemy.offsetHeight;
-  
+
     const leftB = bullet.offsetLeft;
     const leftE = enemy.offsetLeft;
-  
+
       if(topB >= topE && topB <= bottomE && leftB >= leftE) {
           enemy.className = 'boom';
           enemy.style.top = (topE - 10) + 'px';
@@ -97,13 +100,14 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
 
           const id = enemy.dataset.timer as unknown as NodeJS.Timer;
           clearInterval(id);
-          
+
           setTimeout(function() {
             enemy.remove();
-            createEnemy();
+            // createEnemy();
             bullet.remove();
             clearInterval(timer)
           }, 400)
       }
-  }
+  });
+
 }
