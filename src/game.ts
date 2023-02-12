@@ -1,4 +1,6 @@
 import { createHTMLElement, getPlayerData, randomInteger } from "./utils";
+export let bodyCount = 0;
+export let missionWidth = 0;
 
 export function moveHero(e: KeyboardEvent) {
   const hero = document.querySelector('.hero') as HTMLDivElement;
@@ -90,6 +92,7 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
     const leftE = enemy.offsetLeft;
 
       if(topB >= topE && topB <= bottomE && leftB >= leftE) {
+        bodyCount++;
           enemy.className = 'boom';
           enemy.style.top = (topE - 10) + 'px';
           enemy.style.left = (leftE - 10) + 'px';
@@ -102,10 +105,11 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
             // createEnemy();
             bullet.remove();
             clearInterval(timer)
-          }, 400)
+          }, 400);
+
+          updateMissionProgress()
       }
   });
-
 }
 
 export function die() {
@@ -152,6 +156,16 @@ export function isDie() {
 
   })
   
+}
+
+export function updateMissionProgress() {
+  const missionBar = document.querySelector('.mission-bar') as HTMLDivElement;
+  if (missionWidth >= 100) {
+		console.log('finished');
+		return;
+	}
+	missionWidth+=5;
+	missionBar.style.width = missionWidth + '%';
 }
 
 function EndGame() {

@@ -24,17 +24,19 @@ export function renderHeroChoisePage() {
 }
 
 export function renderGameField() {
-  const gameField = document.querySelector('.game-field');
+  const gameField = document.querySelector('.game-field') as HTMLDivElement;
+  gameField.style.backgroundImage = 'url("./catalog-img/mission-1-bkg.jpg")';
   const playerData = getPlayerData();
   gameField?.append(renderHero(playerData));
-  renderHearts()
+  renderHearts();
+  renderBodyCount();
   const number = randomInteger(2, 4);
   setInterval(()=>{
     for (let i = 0; i < number; i++) {
       gameField?.append(createEnemy());
     }
   }, 3000);
-  // createEnemy()
+  
   
 }
 
@@ -62,4 +64,12 @@ export function renderHearts() {
   }
 
   gameField?.append(heartContainer)
+}
+
+export function renderBodyCount() {
+  const gameField = document.querySelector('.game-field');
+  const missionProgress = createHTMLElement('div', 'mission-progress');
+  const missionBar = createHTMLElement('div', 'mission-bar');
+  missionProgress.append(missionBar);
+  gameField?.append(missionProgress);
 }
