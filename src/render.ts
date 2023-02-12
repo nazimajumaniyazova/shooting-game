@@ -1,4 +1,4 @@
-import { createEnemy } from "./game";
+import { createEnemies } from "./game";
 import { createHTMLElement, getPlayerData, Hero, randomInteger } from "./utils";
 
 export function renderHeroChoisePage() {
@@ -30,15 +30,22 @@ export function renderGameField() {
   const playerData = getPlayerData();
   gameField?.append(renderHero(playerData));
   renderHearts();
-  renderBodyCount();
-  const number = randomInteger(2, 4);
-  setInterval(()=>{
-    for (let i = 0; i < number; i++) {
-      gameField?.append(createEnemy());
-    }
-  }, 3000);
+  renderProgressBar();
+  createEnemies();
   
   
+}
+
+export function renderSecondMission(e: KeyboardEvent) {
+  const gameField = document.querySelector('.game-field') as HTMLDivElement;
+  const missionBar = document.querySelector('.mission-bar') as HTMLDivElement;
+  const message = document.querySelector('.message-container') as HTMLDivElement;
+  if (e.code === 'Enter') {
+    gameField.style.backgroundImage = 'url("./catalog-img/mission-2-bkg.jpg")';
+    missionBar.style.width = '0%';
+    message.remove();
+    document.body.removeEventListener('keydown',renderSecondMission);
+  }
 }
 
 export function renderHero(player: Hero) {
@@ -67,10 +74,21 @@ export function renderHearts() {
   gameField?.append(heartContainer)
 }
 
-export function renderBodyCount() {
+export function renderProgressBar() {
   const gameField = document.querySelector('.game-field');
   const missionProgress = createHTMLElement('div', 'mission-progress');
   const missionBar = createHTMLElement('div', 'mission-bar');
   missionProgress.append(missionBar);
   gameField?.append(missionProgress);
+}
+
+export function showMissionCompleteMessage() {
+  const gameField = document.querySelector('.game-field');
+  const messageContainer = createHTMLElement('div', 'message-container');
+  const message = createHTMLElement('div', 'mission-complete-message');
+  message.innerHTML = 'Mission Completed!';
+  const nextMissionMsg = createHTMLElement('span', 'next-mission-message');
+  nextMissionMsg.innerHTML = 'Press Enter to continue';
+  messageContainer.append(message, nextMissionMsg);
+  gameField?.append(messageContainer);
 }

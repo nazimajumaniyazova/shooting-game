@@ -1,6 +1,8 @@
+import { renderSecondMission, showMissionCompleteMessage } from "./render";
 import { createHTMLElement, getPlayerData, randomInteger } from "./utils";
-export let bodyCount = 0;
 export let missionWidth = 0;
+export let isFirstMissionCompleted = false;
+export let firstMissionTimer: NodeJS.Timer;
 
 export function moveHero(e: KeyboardEvent) {
   const hero = document.querySelector('.hero') as HTMLDivElement;
@@ -74,8 +76,20 @@ export function createEnemy() {
   return enemy;
 }
 
-function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
+export function createEnemies() {
 
+  const gameField = document.querySelector('.game-field') as HTMLDivElement;
+
+  firstMissionTimer = setInterval(()=>{
+    const number = randomInteger(1, 4);
+    for (let i = 0; i < number; i++) {
+      gameField?.append(createEnemy());
+    }
+  }, 2500);
+}
+
+function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
+  // const gameField = document.querySelector('.game-field') as HTMLDivElement;
   const topB = bullet.offsetTop;
   // const bottomB = bullet.offsetTop + bullet.offsetHeight;
 
@@ -88,23 +102,39 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
     const leftB = bullet.offsetLeft;
     const leftE = enemy.offsetLeft;
 
-      if(topB >= topE && topB <= bottomE && leftB >= leftE) {
-        bodyCount++;
-          enemy.className = 'boom';
-          enemy.style.top = (topE - 10) + 'px';
-          enemy.style.left = (leftE - 10) + 'px';
+    if(topB >= topE && topB <= bottomE && leftB >= leftE) {
 
-          const id = enemy.dataset.timer as unknown as NodeJS.Timer;
-          clearInterval(id);
+      enemy.className = 'boom';
+      enemy.style.top = (topE - 10) + 'px';
+      enemy.style.left = (leftE - 10) + 'px';
+      const id = enemy.dataset.timer as unknown as NodeJS.Timer;
+      clearInterval(id);
+      setTimeout(function() {
+        enemy.remove();
+        bullet.remove();
+        clearInterval(timer)
+      }, 400);
+      updateMissionProgress();
+    }
 
-          setTimeout(function() {
-            enemy.remove();
-            bullet.remove();
-            clearInterval(timer)
-          }, 400);
+    if (isFirstMissionCompleted) {
+      const enemiesLeft = Array.from(document.querySelectorAll('.enemy') as NodeListOf<HTMLDivElement>);
+      enemiesLeft.forEach(enemy => {
+        enemy.className = 'boom';
+        enemy.style.top = (topE - 10) + 'px';
+        enemy.style.left = (leftE - 10) + 'px';
+        const id = enemy.dataset.timer as unknown as NodeJS.Timer;
+        clearInterval(id);
+        setTimeout(function() {
+        enemy.remove();
+        clearInterval(timer)
+      }, 400);
+      })
+      clearInterval(firstMissionTimer);
+      showMissionCompleteMessage();
 
-          updateMissionProgress()
-      }
+      document.addEventListener('keydown', renderSecondMission)
+    }
   });
 }
 
@@ -151,10 +181,14 @@ export function isDie() {
   
 }
 
+// export function isMissionCompleted() {
+//   if ()
+// }
+
 export function updateMissionProgress() {
   const missionBar = document.querySelector('.mission-bar') as HTMLDivElement;
   if (missionWidth >= 100) {
-		console.log('finished');
+    isFirstMissionCompleted = true;
 		return;
 	}
 	missionWidth+=5;
