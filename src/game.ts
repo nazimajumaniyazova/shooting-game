@@ -56,18 +56,16 @@ function moveBullet(bullet: HTMLDivElement) {
 }
 
 export function createEnemy() {
-  // const gameField = document.querySelector('.game-field');
+
   const enemy = createHTMLElement('div', 'enemy');
   const speed = randomInteger(10, 20);
   enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
-  // gameField?.append(enemy);
   
   const timerId = setInterval(function() {
     enemy.style.left = (enemy.offsetLeft - speed) + 'px';
     if (enemy.offsetLeft + enemy.offsetWidth < 0) {
       enemy.remove();
       clearInterval(timerId);
-      // die();
     }
     isDie()
   }, 100)
@@ -81,7 +79,6 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
   const topB = bullet.offsetTop;
   // const bottomB = bullet.offsetTop + bullet.offsetHeight;
 
-  // const enemy = document.querySelector('.enemy') as HTMLDivElement;
   const enemies = Array.from(document.querySelectorAll('.enemy') as NodeListOf<HTMLDivElement>);
 
   enemies.forEach(enemy => {
@@ -102,7 +99,6 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
 
           setTimeout(function() {
             enemy.remove();
-            // createEnemy();
             bullet.remove();
             clearInterval(timer)
           }, 400);
@@ -146,11 +142,8 @@ export function isDie() {
             clearInterval(id);
             setTimeout(function() {
               enemy.remove();
-              // createEnemy();
-              // clearInterval(timer)
             }, 400)
   
-            // die!
         die()
       }
 

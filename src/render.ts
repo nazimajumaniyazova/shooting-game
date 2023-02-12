@@ -26,6 +26,7 @@ export function renderHeroChoisePage() {
 export function renderGameField() {
   const gameField = document.querySelector('.game-field') as HTMLDivElement;
   gameField.style.backgroundImage = 'url("./catalog-img/mission-1-bkg.jpg")';
+  gameField.style.backgroundPosition = '40%';
   const playerData = getPlayerData();
   gameField?.append(renderHero(playerData));
   renderHearts();
