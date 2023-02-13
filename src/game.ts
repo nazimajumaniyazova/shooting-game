@@ -133,7 +133,7 @@ function isShot(bullet: HTMLDivElement, timer: NodeJS.Timer) {
       clearInterval(firstMissionTimer);
       showMissionCompleteMessage();
 
-      document.addEventListener('keydown', renderSecondMission)
+      document.body.addEventListener('keydown', renderSecondMission)
     }
   });
 }

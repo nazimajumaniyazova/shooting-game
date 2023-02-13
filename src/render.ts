@@ -39,11 +39,13 @@ export function renderGameField() {
 export function renderSecondMission(e: KeyboardEvent) {
   const gameField = document.querySelector('.game-field') as HTMLDivElement;
   const missionBar = document.querySelector('.mission-bar') as HTMLDivElement;
-  const message = document.querySelector('.message-container') as HTMLDivElement;
+  const messages = Array.from(document.querySelectorAll('.message-container') as NodeListOf<HTMLDivElement>);
   if (e.code === 'Enter') {
     gameField.style.backgroundImage = 'url("./catalog-img/mission-2-bkg.jpg")';
     missionBar.style.width = '0%';
-    message.remove();
+    messages.forEach(message => {
+      message.remove();
+    })
     document.body.removeEventListener('keydown',renderSecondMission);
   }
 }
