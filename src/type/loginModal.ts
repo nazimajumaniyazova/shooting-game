@@ -67,6 +67,7 @@ const wrapperLogin = document.querySelector('.wrapper-login') as HTMLElement
 
 headerUser?.addEventListener('click', () => {
   wrapperLogin.classList.remove('active')
+  signInClick()
 })
 
 wrapperLogin.addEventListener('click', (e) => {
@@ -86,13 +87,17 @@ function resetstyles() {
   username.value = ''
   pass.value = ''
   passConfirm.value = ''
+  email.style.border = '1px solid #000'
+  email.style.border = '1px solid #000'
+  pass.style.border = '1px solid #000'
+  passConfirm.style.border = '1px solid #000'
   email.classList.remove('valid')
   username.classList.remove('valid')
   pass.classList.remove('valid')
   passConfirm.classList.remove('valid')
 }
 
-signOn.addEventListener('click', () => {
+function signOnClick() {
   signIn.classList.remove('active')
   conditionName.classList.remove('active')
   conditionPassword.classList.remove('active')
@@ -100,9 +105,13 @@ signOn.addEventListener('click', () => {
   formBtn.innerHTML = 'Sign on'
   formBtn.setAttribute('data', 'sign-on')
   resetstyles()
+}
+
+signOn.addEventListener('click', () => {
+  signOnClick()
 })
 
-signIn.addEventListener('click', () => {
+function signInClick() {
   signIn.classList.add('active')
   conditionName.classList.add('active')
   conditionPassword.classList.add('active')
@@ -110,6 +119,9 @@ signIn.addEventListener('click', () => {
   formBtn.innerHTML = 'Sign in'
   formBtn.setAttribute('data', 'sign-in')
   resetstyles()
+}
+signIn.addEventListener('click', () => {
+  signInClick()
 })
 
 const nameReg = /^[a-z0-9_-]{3,16}$/;
@@ -123,7 +135,7 @@ function conditionSignOn() {
   }
 
   const json = JSON.stringify(user);
-  localStorage.setItem(username.value, json)
+  localStorage.setItem(email.value, json)
 }
 
 formBtn.addEventListener('click', (event) => {
@@ -171,5 +183,26 @@ formBtn.addEventListener('click', (event) => {
     resetstyles()
     alert('вы зарегистрировались')
     wrapperLogin.classList.add('active')
+  }
+})
+
+
+//--------------Вход---------------------------
+formBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  if (formBtn.getAttribute('data') === 'sign-in') { 
+    const localEmail = localStorage.getItem(email.value)
+
+    if (localEmail) {
+      const emailParse = JSON.parse(localEmail)
+      if (emailParse.email != '' && emailParse.password != '' && emailParse.username != '') {
+        const headerText = document.querySelector('.header-text') as HTMLElement;
+        const name = emailParse.username
+        headerText.innerHTML = `Helo: ${name}`
+        wrapperLogin.classList.add('active')
+        headerUser?.classList.add('active')
+      }
+    }
   }
 })

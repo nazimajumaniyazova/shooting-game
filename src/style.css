@@ -162,6 +162,17 @@ body {
   cursor: pointer;
   z-index: 2;
 }
+.header-user.active{
+  background: url(./catalog-img/userActive.png);
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 15px;
+  cursor: pointer;
+  z-index: 2;
+}
 
 /*----------------------login----------*/
 /*--------------------header---------------------------------*/
