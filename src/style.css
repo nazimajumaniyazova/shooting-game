@@ -247,7 +247,7 @@ body {
 }
 
 .form-field input{
-  background-color: rgb(221, 217, 217);
+  /* background-color: rgb(221, 217, 217); */
   width: 100%;
   border: 1px solid #000;
   color: rgb(0, 0, 0);
