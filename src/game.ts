@@ -1,6 +1,6 @@
 import { renderSecondMission, showMissionCompleteMessage } from "./render";
 import { createHTMLElement, getPlayerData, randomInteger } from "./utils";
-export let missionWidth = 0;
+export let mission1Width = 0;
 export let isFirstMissionCompleted = false;
 export let firstMissionTimer: NodeJS.Timer;
 
@@ -181,18 +181,14 @@ export function isDie() {
   
 }
 
-// export function isMissionCompleted() {
-//   if ()
-// }
-
 export function updateMissionProgress() {
   const missionBar = document.querySelector('.mission-bar') as HTMLDivElement;
-  if (missionWidth >= 100) {
+  if (mission1Width >= 100) {
     isFirstMissionCompleted = true;
 		return;
 	}
-	missionWidth+=5;
-	missionBar.style.width = missionWidth + '%';
+	mission1Width+=5;
+	missionBar.style.width = mission1Width + '%';
 }
 
 function EndGame() {

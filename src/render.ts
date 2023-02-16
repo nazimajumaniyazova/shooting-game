@@ -1,5 +1,6 @@
-import { createEnemies } from "./game";
-import { createHTMLElement, getPlayerData, Hero, randomInteger } from "./utils";
+import { createEnemies, moveHero } from "./game";
+import { createEnemies2, moveHero2 } from "./game-2";
+import { createHTMLElement, getPlayerData, Hero } from "./utils";
 
 export function renderHeroChoisePage() {
   const gameField = createHTMLElement('div', 'game-field');
@@ -32,8 +33,6 @@ export function renderGameField() {
   renderHearts();
   renderProgressBar();
   createEnemies();
-  
-  
 }
 
 export function renderSecondMission(e: KeyboardEvent) {
@@ -47,7 +46,13 @@ export function renderSecondMission(e: KeyboardEvent) {
       message.remove();
     })
     document.body.removeEventListener('keydown',renderSecondMission);
+    document.body.removeEventListener('keydown', moveHero);
+    document.body.addEventListener('keydown', moveHero2);
+    createEnemies2()
+  } else {
+    return
   }
+  
 }
 
 export function renderHero(player: Hero) {
@@ -55,12 +60,6 @@ export function renderHero(player: Hero) {
   hero.style.backgroundImage = `url(${player.skin})`;
   if (player.name === 'Julie') hero.classList.add('hero-2');
   return hero;
-}
-
-export function renderEnemy() {
-  const enemy = createHTMLElement('div', 'enemy');
-  enemy.style.top = randomInteger(100, document.body.offsetHeight - 100) + 'px';
-  return enemy;
 }
 
 export function renderHearts() {

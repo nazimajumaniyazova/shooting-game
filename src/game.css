@@ -112,6 +112,11 @@ body {
 	right: 15px;
 }
 
+.enemy.rhino {
+	background-image: url('./catalog-img/fly-2.png');
+	width: 86px;
+}
+
 .boom {
 	background-image: url('./catalog-img/explosion.gif');
 	background-size: contain;
