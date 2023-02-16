@@ -10,6 +10,6 @@ import './type/helpGame.css'
 import './starting';
 import './choose-hero';
 
-import './type/loginModal.ts'
+import './type/loginModal'
 
 
