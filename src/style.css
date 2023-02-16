@@ -32,6 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  margin-bottom: 20px;
 }
 .container-bottom {
   height: 50vh;
@@ -47,21 +48,34 @@ body {
   animation-name: elementAppearing;
   animation-duration: 2s;
 }
+.logo{
+  width: 580px;
+  animation-name: getBigger;
+  animation-duration: 2s;
+}
 .start-btn {
+  font-family: 'Alfa Slab One';
+  color: #fffc00;
+
   font-size: 2em;
   cursor: pointer;
   width: 150px;
   padding: 5px;
-  border: 1px solid #000;
+  border: 1px solid #fffc00;
 
   display: flex;
   justify-content: center;
   align-items: center;
   display: none;
+  margin-bottom: 20px;
 }
+
 .press-enter {
- color: rgba(255, 255, 255, .6);
+ color: #fffc00;
  display: none;
+ text-align: center;
+ font-family: 'Alfa Slab One';
+ letter-spacing: 1px;
 }
 .start-btn.display-on{
   display: block;
@@ -79,6 +93,14 @@ body {
     opacity: 1;
   }
 }
+@keyframes getBigger{
+  from {
+    width: 100px;
+  }
+  to {
+    width: 580px;
+  }
+}
 #canvas1 {
   border: 1px solid #000;
   position: absolute;
@@ -88,10 +110,12 @@ body {
 
 /* Typing Style */
 .sentence{
-  font-size: 3rem;
+  font-size: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Alfa Slab One';
+  letter-spacing: 1px;
 }
 .typing-container {
   display: flex;
@@ -133,7 +157,8 @@ body {
   right: 100px;
   width: 100px;
   height: 50px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: 'Alfa Slab One';
 }
 
 
