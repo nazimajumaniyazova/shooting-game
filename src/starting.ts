@@ -1,4 +1,5 @@
-import { renderHeroChoisePage } from "./render";
+// import { renderHeroChoisePage } from "./render";
+
 
 const container = document.querySelector('.container') as HTMLElement;
 welcome()
@@ -16,16 +17,18 @@ function welcome() {
   // gameName.innerText = 'Savior';
   // containertTop.append(gameName);
 
-  const containerBottom = createNode('div', 'container-bottom');
-  container.append(containerBottom);
+//   const containerBottom = createNode('div', 'container-bottom');
+//   container.append(containerBottom);
+
 
   const startBtn = createNode('button', ['start-btn', 'btn']);
   startBtn.innerText = 'START';
   containerBottom.append(startBtn);
 
-  const pressEnter = createNode('p', 'press-enter');
-  pressEnter.innerText = 'or press Enter';
-  containerBottom.append(pressEnter);
+
+//   const pressEnter = createNode('p', 'press-enter');
+//   pressEnter.innerText = 'or press Enter';
+//   containerBottom.append(pressEnter);
   
   setTimeout(() => {
     startBtn.classList.add('display-on');
@@ -163,3 +166,4 @@ function animate() {
   gameFrame++;
 }
 animate()
+
