@@ -7,19 +7,20 @@ function welcome() {
   const containertTop = createNode('div', 'container-top');
   container.append(containertTop);
 
-  const welcomeText = createNode('p', 'welcome-text');
-  welcomeText.innerText = 'Welcome';
-  containertTop.append(welcomeText);
+  const logo = createNode('img', 'logo') as HTMLImageElement;
+  logo.src = './catalog-img/logo.png'
+  // welcomeText.innerText = 'Welcome';
+  containertTop.append(logo);
 
-  const gameName = createNode('div', 'game-name');
-  gameName.innerText = 'Savior';
-  containertTop.append(gameName);
+  // const gameName = createNode('div', 'game-name');
+  // gameName.innerText = 'Savior';
+  // containertTop.append(gameName);
 
   const containerBottom = createNode('div', 'container-bottom');
   container.append(containerBottom);
 
   const startBtn = createNode('button', ['start-btn', 'btn']);
-  startBtn.innerText = 'start';
+  startBtn.innerText = 'START';
   containerBottom.append(startBtn);
 
   const pressEnter = createNode('p', 'press-enter');
@@ -85,7 +86,7 @@ function waitForMs(ms: number){
   return new Promise(resolve =>setTimeout(resolve,ms))
 }
 async function typeGameStory(){
-  const gameStoryText = ['3023 year', 'The Earth is attacked by giant insects from outer space!', 'Your mission is to eliminate invaders and save the planet.', 'You have been chosen to accomplish this mission.'];
+  const gameStoryText = ['The year 3023', 'The Earth is attacked by giant insects from outer space!', 'Your mission is to eliminate invaders and save the planet.', 'You have been chosen to accomplish this mission.'];
   for (const item of gameStoryText) {
     const typingItem = crateTypingItem();
     container.append(typingItem);
