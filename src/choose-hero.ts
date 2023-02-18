@@ -50,8 +50,8 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
 function gameAnimation() {
   const canvas = createHTMLElement('canvas', 'canvas') as HTMLCanvasElement;
   const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-  canvas.width  = 800;
-  canvas.height  = 600;
+  canvas.width  = document.documentElement.scrollWidth;
+  canvas.height  = document.documentElement.scrollHeight;
   document.body.append(canvas);
   const game = new Game(canvas.width, canvas.height)
 
@@ -60,8 +60,8 @@ function gameAnimation() {
     const deltaTime = currentTimeStamp - previousTimeStamp;
     previousTimeStamp = currentTimeStamp;
     context.clearRect(0,0,canvas.width,canvas.height)
-    game.update(deltaTime)
     game.draw(context)
+    game.update(deltaTime)
     requestAnimationFrame(animate)
   }
   animate(0)
