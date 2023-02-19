@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 // import { renderHeroChoisePage } from "./render";
 import {Player} from "./utils";
-
+import {createHTMLElement} from './utils'
+import { Game } from "./game/Game";
 // renderHeroChoisePage();
 
 document.body.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -17,6 +19,10 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
     } else {
       female?.classList.add('active')
     }
+  }
+  if(e.key === "Enter") {
+    document.querySelector('.game-field')?.remove()
+    gameAnimation();
   }
 });
 
@@ -41,4 +47,22 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
 
 });
 
+function gameAnimation() {
+  const canvas = createHTMLElement('canvas', 'canvas') as HTMLCanvasElement;
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+  canvas.width  = document.documentElement.scrollWidth;
+  canvas.height  = document.documentElement.scrollHeight;
+  document.body.append(canvas);
+  const game = new Game(canvas.width, canvas.height)
 
+  let previousTimeStamp = 0
+  function animate(currentTimeStamp: number){
+    const deltaTime = currentTimeStamp - previousTimeStamp;
+    previousTimeStamp = currentTimeStamp;
+    context.clearRect(0,0,canvas.width,canvas.height)
+    game.draw(context)
+    game.update(deltaTime)
+    requestAnimationFrame(animate)
+  }
+  animate(0)
+}
