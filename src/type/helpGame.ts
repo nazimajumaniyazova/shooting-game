@@ -1,11 +1,10 @@
-const blockHelp = () => {
+export const blockHelp = () => {
   const sactionHelp = <HTMLElement>document.createElement('div');
   sactionHelp.classList.add('block-help')
   document.body.appendChild(sactionHelp);
 }
-blockHelp()
 
-const wrapperBlokHelp = () => {
+export const wrapperBlokHelp = () => {
   const block = `
   <div class="wrapper-blok-help">
   <div class="colum-block">
@@ -43,7 +42,7 @@ const wrapperBlokHelp = () => {
         <span class="fon-text help-life-text">Number of lives</span>
     </div>
     <div class="col ">
-      <img src="./catalog-img/enemy-1.png" style="width: 30%;" alt="#">
+      <img src="./catalog-img/sprites/skeleton-animation_00.png" style="width: 30%;" alt="#">
       <span class="fon-text help-enemy-text">Enemy</span>
     </div>
     <div class="col"></div>
@@ -61,7 +60,7 @@ const wrapperBlokHelp = () => {
 }
 
 
-const wrapperBlokHelpCopy = () => {
+export const wrapperBlokHelpCopy = () => {
   const block = `  <div class="colum-block">
   <div class="col col-copy col1-1"></div>
   <div class="col col-copy col1-2 help-player" data-click="true">
@@ -97,7 +96,7 @@ const wrapperBlokHelpCopy = () => {
 }
 
 
-function clickBlockHelp() {
+export function clickBlockHelp() {
   const divBlock = document.querySelectorAll('.col-copy')
   const helpPlayer = document.querySelector('.help-player') as HTMLElement
   const helpLife = document.querySelector('.help-life') as HTMLElement
@@ -151,11 +150,6 @@ function clickBlockHelp() {
 
 
 
-const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
-elementBlockHelp.addEventListener('click', () => {
-  document.body.innerHTML = ''
-  wrapperBlokHelp();
-  wrapperBlokHelpCopy();
-  clickBlockHelp()
-})
+
+
 

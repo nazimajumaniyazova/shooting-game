@@ -116,6 +116,7 @@ right: 50px;
 
 /*---block-game-----*/
 .block-help{
+  display: block;
   position: absolute;
   z-index: 6;
   bottom: 0;
@@ -130,4 +131,8 @@ right: 50px;
   background-size: cover;
   margin: 10px;
   cursor: pointer;
+}
+
+.block-help.active{
+  display: none;
 }
