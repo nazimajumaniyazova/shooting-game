@@ -1,5 +1,6 @@
 import { renderHeroChoisePage } from "./render";
 import { wrapperBlokHelp, blockHelp, wrapperBlokHelpCopy, clickBlockHelp } from './type/helpGame';
+import { renderSettings, wrapperSetting } from "./type/settingModal"
 
 
 const container = document.querySelector('.container') as HTMLElement;
@@ -108,16 +109,18 @@ function displaySkipBtn() {
   skipBtn.innerHTML = 'Skip';
   container.append(skipBtn);
 
-  skipBtn.addEventListener('click', () => {
+  skipBtn.addEventListener('click', async () => {
     onSkipBtnClick()
     blockHelp()
+    renderSettings()
     const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
     elementBlockHelp.addEventListener('click', () => {
     document.body.innerHTML = ''
     wrapperBlokHelp();
     wrapperBlokHelpCopy();
     clickBlockHelp()
-})
+    })
+    wrapperSetting()
   })
 }
 

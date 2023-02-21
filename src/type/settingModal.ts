@@ -1,4 +1,4 @@
-const renderSettings = () => {
+export const renderSettings = () => {
   const html = `
   <div class="wrapper-modal__settings">
     <div class="player">
@@ -36,9 +36,9 @@ const renderSettings = () => {
   sactionSettings.classList.add('settings')
   document.body.appendChild(sactionSettings);
 }
-renderSettings()
 
-const btnSettings = document.querySelector('.settings') as HTMLElement
+export function wrapperSetting() {
+  const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
 const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageElement;
 const audio = document.querySelector('.audio') as HTMLAudioElement;
@@ -93,6 +93,7 @@ switchBtn.forEach(item => {
     }
   })
 })
+}
 
-export { };
+
 
