@@ -121,7 +121,6 @@ function displaySkipBtn() {
     header?.remove()
     const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
     elementBlockHelp.addEventListener('click', () => {
-    document.body.innerHTML = ''
     wrapperBlokHelp();
     wrapperBlokHelpCopy();
     clickBlockHelp()

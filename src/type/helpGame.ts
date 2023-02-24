@@ -106,6 +106,11 @@ export function clickBlockHelp() {
   const helpLifeText = document.querySelector('.help-life-text') as HTMLElement
   const helpEnemyText = document.querySelector('.help-enemy-text') as HTMLElement 
   const fontextSettings = document.querySelector('.fon-text-settings') as HTMLElement
+  const wrapperBlokHelp = document.querySelector('.wrapper-blok-help') as HTMLElement
+  const wrapperBlokHelpCopy = document.querySelector('.wrapper-blok-help-copy') as HTMLElement
+ 
+
+  
   helpPlayer.style.background = 'none'
   helpPlayer.style.cursor= 'pointer';
   divBlock.forEach(item => {
@@ -140,10 +145,10 @@ export function clickBlockHelp() {
         helpSettings.style.cursor = 'auto';
         fontextSettings.style.display = 'none'
         document.querySelector('.wrapper-blok-help-copy')?.addEventListener('click', () => {
-          document.body.innerHTML = ''
+          wrapperBlokHelp.remove()
+          wrapperBlokHelpCopy.remove()
         })
       }
-
     })
   })
 }

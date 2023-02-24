@@ -1,5 +1,9 @@
 /*----------------------окно подсказок------------------*/
 .wrapper-blok-back{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   background: url(../catalog-img/fon.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -12,6 +16,13 @@
   width: 100%;
   height: 100vh;
   color: black;
+}
+
+.wrapper-blok-help.active{
+  display: none;
+}
+.wrapper-blok-help-copy.active{
+  display: none;
 }
 
 .colum-block{
