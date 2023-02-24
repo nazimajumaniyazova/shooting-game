@@ -45,6 +45,7 @@ const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
 const switchBtn = document.querySelectorAll('.switch-btn');
+const headerUser = document.querySelector('.header-user')
 
 audio.volume = 0.3
 
@@ -59,16 +60,21 @@ volume.addEventListener('input', () => {
     img.src = "./catalog-img/volume.png"
   }
 })
+  
 
-btnSettings?.addEventListener('click', () => {
-  const wrapperModal = document.querySelector('.wrapper-modal')
-  wrapperModal?.classList.toggle('active')
-  if (wrapperModal?.classList.contains('active')) {
-    btnSettings.classList.add('active')
-  } else {
-    btnSettings.classList.remove('active')
+
+  btnSettings?.addEventListener('click', () => {
+    if (headerUser?.classList.contains('active')) {
+      const wrapperModal = document.querySelector('.wrapper-modal')
+      wrapperModal?.classList.toggle('active')
+      if (wrapperModal?.classList.contains('active')) {
+        btnSettings.classList.add('active')
+      } else {
+        btnSettings.classList.remove('active')
   }
-})
+    }
+  })
+  
 
 imgPlayPause.addEventListener('click', () => {
   btnPlay.classList.toggle('play')
@@ -94,6 +100,8 @@ switchBtn.forEach(item => {
   })
 })
 }
+
+
 
 
 
