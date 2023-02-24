@@ -21,8 +21,10 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
     }
   }
   if(e.key === "Enter") {
+    const chosedHero = document.querySelector('.heroes .active')!.getAttribute('data-type')!
     document.querySelector('.game-field')?.remove()
-    gameAnimation();
+    console.log(chosedHero)
+    gameAnimation(chosedHero);
   }
 });
 
@@ -47,13 +49,13 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
 
 });
 
-function gameAnimation() {
+function gameAnimation(chosedHero: string) {
   const canvas = createHTMLElement('canvas', 'canvas') as HTMLCanvasElement;
   const context = canvas.getContext('2d') as CanvasRenderingContext2D;
   canvas.width  = document.documentElement.scrollWidth;
   canvas.height  = document.documentElement.scrollHeight;
   document.body.append(canvas);
-  const game = new Game(canvas.width, canvas.height)
+  const game = new Game(canvas.width, canvas.height, chosedHero)
 
   let previousTimeStamp = 0
   function animate(currentTimeStamp: number){
