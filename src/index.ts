@@ -16,4 +16,5 @@ import './type/loginModal'
 
 
 import './footer/footer.ts'
+import './type/api'
 
