@@ -189,7 +189,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 .header-user.active{
   background: url(./catalog-img/userActive.png);
@@ -200,7 +200,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 
 /*----------------------login----------*/
@@ -227,7 +227,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 
 /*-----------------login---------------*/
