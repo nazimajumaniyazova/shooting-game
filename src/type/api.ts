@@ -1,23 +1,28 @@
+import { Iusers } from "./loginModal";
+
 const baseUrl = 'https://jsonserver-drxg.onrender.com';
 
 const users = `${baseUrl}/users`;
 
-interface Iusers{
-  id?: number;
-  username: string,
-  email: string,
-  password: string,
-}
 
-// получаю одну машину по id
-export const getCar = async (id: number) => {
+//получить всех users
+export const getUsers = async () => {
+  const respons = await fetch(`${users}`);
+  return {
+      item: await respons.json(),
+      count: respons.headers.get('X-Total-Count'),
+  };
+};
+
+// получаю User по id
+export const getUser = async (id: number) => {
   const respons = await fetch(`${users}/${id}`);
   const user = await respons.json();
   return user;
 };
 
 // для дабавление элемента
-export const createCar = async (body: Iusers) => {
+export const createUser = async (body: Iusers) => {
   const respons = await fetch(`${users}`, {
       method: 'POST',
       headers: {
