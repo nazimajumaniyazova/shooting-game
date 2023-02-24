@@ -109,10 +109,16 @@ function displaySkipBtn() {
   skipBtn.innerHTML = 'Skip';
   container.append(skipBtn);
 
+
+  const footer = document.querySelector('.footer')
+  const header = document.querySelector('.header')
+
   skipBtn.addEventListener('click', async () => {
     onSkipBtnClick()
     blockHelp()
     renderSettings()
+    footer?.remove()
+    header?.remove()
     const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
     elementBlockHelp.addEventListener('click', () => {
     document.body.innerHTML = ''
