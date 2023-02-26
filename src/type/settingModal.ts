@@ -60,8 +60,6 @@ volume.addEventListener('input', () => {
     img.src = "./catalog-img/volume.png"
   }
 })
-  
-
 
   btnSettings?.addEventListener('click', () => {
     if (headerUser?.classList.contains('active')) {

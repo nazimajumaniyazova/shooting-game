@@ -1,6 +1,6 @@
 import {createUser, getUsers} from './api'
 
-const renderHeader = () => {
+export const renderHeader = () => {
   const block = `
   <div class="header-text">Hello</div>
   <div class="header-user"></div>
