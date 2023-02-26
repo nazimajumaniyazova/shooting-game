@@ -1,3 +1,5 @@
+import {createUser, getUsers} from './api'
+
 const renderHeader = () => {
   const block = `
   <div class="header-text">Hello</div>
@@ -76,7 +78,7 @@ wrapperLogin.addEventListener('click', (e) => {
   }
 })
 
-interface users {
+export interface Iusers {
   username: string,
   email: string,
   password: string,
@@ -127,15 +129,15 @@ signIn.addEventListener('click', () => {
 const nameReg = /^[a-z0-9_-]{3,16}$/;
 const emailReg = /^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/;
 
-function conditionSignOn() {
-  const user: users  = {
+async function conditionSignOn() {
+
+  const set = await createUser(<Iusers>{
     email: email.value,
     username: username.value,
     password: pass.value,
   }
-
-  const json = JSON.stringify(user);
-  localStorage.setItem(email.value, json)
+  )
+  return set
 }
 
 formBtn.addEventListener('click', (event) => {
@@ -186,23 +188,28 @@ formBtn.addEventListener('click', (event) => {
   }
 })
 
-
 //--------------Вход---------------------------
-formBtn.addEventListener('click', (event) => {
+formBtn.addEventListener('click', async (event) => {
   event.preventDefault();
 
   if (formBtn.getAttribute('data') === 'sign-in') { 
-    const localEmail = localStorage.getItem(email.value)
 
-    if (localEmail) {
-      const emailParse = JSON.parse(localEmail)
-      if (emailParse.email != '' && emailParse.password != '' && emailParse.username != '') {
-        const headerText = document.querySelector('.header-text') as HTMLElement;
-        const name = emailParse.username
-        headerText.innerHTML = `Helo: ${name}`
-        wrapperLogin.classList.add('active')
-        headerUser?.classList.add('active')
+    if (email.value != '') {
+      const user = (await getUsers()).item.find((el: Iusers) => el.email === email.value);
+      if (user != undefined) {
+        if (user.password != undefined && pass.value === user.password) {
+          const headerText = document.querySelector('.header-text') as HTMLElement;
+          const name = user.username
+          headerText.innerHTML = `Helo: ${name}`
+          wrapperLogin.classList.add('active')
+          headerUser?.classList.add('active')
+          const json = JSON.stringify(user.username);
+          localStorage.setItem(user.email, json)
+        } else {
+          alert('не верный логин или пароль')
+        }
       }
+      
     }
   }
 })

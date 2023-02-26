@@ -1,4 +1,4 @@
-const renderSettings = () => {
+export const renderSettings = () => {
   const html = `
   <div class="wrapper-modal__settings">
     <div class="player">
@@ -36,15 +36,16 @@ const renderSettings = () => {
   sactionSettings.classList.add('settings')
   document.body.appendChild(sactionSettings);
 }
-renderSettings()
 
-const btnSettings = document.querySelector('.settings') as HTMLElement
+export function wrapperSetting() {
+  const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
 const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageElement;
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
 const switchBtn = document.querySelectorAll('.switch-btn');
+const headerUser = document.querySelector('.header-user')
 
 audio.volume = 0.3
 
@@ -59,16 +60,21 @@ volume.addEventListener('input', () => {
     img.src = "./catalog-img/volume.png"
   }
 })
+  
 
-btnSettings?.addEventListener('click', () => {
-  const wrapperModal = document.querySelector('.wrapper-modal')
-  wrapperModal?.classList.toggle('active')
-  if (wrapperModal?.classList.contains('active')) {
-    btnSettings.classList.add('active')
-  } else {
-    btnSettings.classList.remove('active')
+
+  btnSettings?.addEventListener('click', () => {
+    if (headerUser?.classList.contains('active')) {
+      const wrapperModal = document.querySelector('.wrapper-modal')
+      wrapperModal?.classList.toggle('active')
+      if (wrapperModal?.classList.contains('active')) {
+        btnSettings.classList.add('active')
+      } else {
+        btnSettings.classList.remove('active')
   }
-})
+    }
+  })
+  
 
 imgPlayPause.addEventListener('click', () => {
   btnPlay.classList.toggle('play')
@@ -93,6 +99,9 @@ switchBtn.forEach(item => {
     }
   })
 })
+}
 
-export { };
+
+
+
 

@@ -30,7 +30,8 @@ document.body.addEventListener('keydown', (e: KeyboardEvent) => {
 document.body.addEventListener('keydown', (e: KeyboardEvent) => {
 
   if (e.code === 'Enter') {
-
+    const header = document.querySelector('.header')
+    header?.remove()
     const target = document.querySelector('.active') as HTMLElement;
     const skin = target.dataset.type as string;
     if (skin === 'male') {

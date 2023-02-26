@@ -11,6 +11,10 @@ import './starting';
 import './choose-hero';
 // import './game.html';
 
+
 import './type/loginModal'
 
+
+import './footer/footer.ts'
+import './type/api'
 
