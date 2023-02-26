@@ -15,7 +15,11 @@ export class Player {
     this.width = 229 * 0.7;
     this.height = 226 * 0.7;
     this.image = new Image(this.width, this.height)
-    this.image.src = './catalog-img/female.png'
+    if(this.game.chosedHero === 'female') {
+      this.image.src = './catalog-img/female.png'
+    }else{
+      this.image.src = './catalog-img/male.png'
+    }
     this.x = 20
     this.y = 100
     this.speedY = 1 // вертикальное движение
@@ -31,6 +35,12 @@ export class Player {
       this.speedY = 0
     }
     this.y += this.speedY;
+    // обработка границ
+    if( this.y >this.game.height - this.height * 0.8) {
+      this.y = this.game.height - this.height * 0.8
+    }else if(this.y < - this.height*0.2) {
+      this.y = -this.height*0.2
+    }
     //обратобка патронов
     this.projectiles.forEach(projectile => {
       projectile.update();
