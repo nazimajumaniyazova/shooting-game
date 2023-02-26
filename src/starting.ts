@@ -132,7 +132,7 @@ function displaySkipBtn() {
   })
 }
 
-function onSkipBtnClick() {
+export function onSkipBtnClick() {
   container.remove();
   renderHeroChoisePage()
 }

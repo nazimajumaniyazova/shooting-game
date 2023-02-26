@@ -10,7 +10,7 @@ export const wrapperBlokHelp = () => {
   <div class="colum-block">
   <div class="col col1-1"></div>
   <div class="col col1-2">
-    <img src="./catalog-img/male-player.png" style="width: 75%;" alt="#">
+    <img src="./catalog-img/male.png" style="width: 35%;" alt="#">
     <div class="fon-text fon-text-game">
     Movement to the top ⬆️ <br>
     Movement to the bottom ⬇️<br>
@@ -42,7 +42,7 @@ export const wrapperBlokHelp = () => {
         <span class="fon-text help-life-text">Number of lives</span>
     </div>
     <div class="col ">
-      <img src="./catalog-img/sprites/skeleton-animation_00.png" style="width: 30%;" alt="#">
+      <img src="./catalog-img/enemy-one.png" style="width: 40%;" alt="#">
       <span class="fon-text help-enemy-text">Enemy</span>
     </div>
     <div class="col"></div>
@@ -108,9 +108,7 @@ export function clickBlockHelp() {
   const fontextSettings = document.querySelector('.fon-text-settings') as HTMLElement
   const wrapperBlokHelp = document.querySelector('.wrapper-blok-help') as HTMLElement
   const wrapperBlokHelpCopy = document.querySelector('.wrapper-blok-help-copy') as HTMLElement
- 
 
-  
   helpPlayer.style.background = 'none'
   helpPlayer.style.cursor= 'pointer';
   divBlock.forEach(item => {
