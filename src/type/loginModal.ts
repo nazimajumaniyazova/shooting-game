@@ -204,7 +204,7 @@ formBtn.addEventListener('click', async (event) => {
           wrapperLogin.classList.add('active')
           headerUser?.classList.add('active')
           const json = JSON.stringify(user.username);
-          localStorage.setItem(user.email, json)
+          localStorage.setItem('user', json)
         } else {
           alert('не верный логин или пароль')
         }
