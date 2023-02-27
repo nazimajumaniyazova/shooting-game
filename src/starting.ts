@@ -126,7 +126,27 @@ function displaySkipBtn() {
     clickBlockHelp()
     })
     wrapperSetting()
-  })
+  });
+
+  document.body.addEventListener('keydown', skipStory);
+}
+
+export async function skipStory(e: KeyboardEvent) {
+  const footer = document.querySelector('.footer')
+  if (e.key === 'Enter') {
+    onSkipBtnClick()
+    blockHelp()
+    renderSettings()
+    footer?.remove()
+    // header?.remove()
+    const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
+    elementBlockHelp.addEventListener('click', () => {
+    wrapperBlokHelp();
+    wrapperBlokHelpCopy();
+    clickBlockHelp()
+    })
+    wrapperSetting()
+  }
 }
 
 function onSkipBtnClick() {
