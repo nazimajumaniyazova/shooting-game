@@ -41,7 +41,6 @@ const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageEleme
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
-const switchBtn = document.querySelectorAll('.switch-btn');
 const modalSettings = document.querySelector('.wrapper-modal__settings')
 const switchBtn = document.querySelectorAll('.switch-btn');
 const headerUser = document.querySelector('.header-user')
@@ -126,6 +125,4 @@ modalSettings?.addEventListener('click', (event: Event)=> {
 }
 
 export { gameVolume, dayTime};
-
-}
 
