@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-const renderSettings = () => {
+export const renderSettings = () => {
   const html = `
   <div class="wrapper-modal__settings">
     <div class="player">
@@ -33,9 +33,9 @@ const renderSettings = () => {
   sactionSettings.classList.add('settings')
   document.body.appendChild(sactionSettings);
 }
-renderSettings()
 
-const btnSettings = document.querySelector('.settings') as HTMLElement
+export function wrapperSetting() {
+  const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
 const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageElement;
 const audio = document.querySelector('.audio') as HTMLAudioElement;
@@ -43,6 +43,9 @@ const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
 const switchBtn = document.querySelectorAll('.switch-btn');
 const modalSettings = document.querySelector('.wrapper-modal__settings')
+const switchBtn = document.querySelectorAll('.switch-btn');
+const headerUser = document.querySelector('.header-user')
+
 audio.volume = 0.3
 
 let gameVolume = volume.value;
@@ -59,15 +62,18 @@ volume.addEventListener('input', () => {
   gameVolume = volume.value
 })
 
-btnSettings?.addEventListener('click', () => {
-  const wrapperModal = document.querySelector('.wrapper-modal')
-  wrapperModal?.classList.toggle('active')
-  if (wrapperModal?.classList.contains('active')) {
-    btnSettings.classList.add('active')
-  } else {
-    btnSettings.classList.remove('active')
+  btnSettings?.addEventListener('click', () => {
+    if (headerUser?.classList.contains('active')) {
+      const wrapperModal = document.querySelector('.wrapper-modal')
+      wrapperModal?.classList.toggle('active')
+      if (wrapperModal?.classList.contains('active')) {
+        btnSettings.classList.add('active')
+      } else {
+        btnSettings.classList.remove('active')
   }
-})
+    }
+  })
+  
 
 imgPlayPause.addEventListener('click', () => {
   btnPlay.classList.toggle('play')
@@ -104,18 +110,22 @@ modalSettings?.addEventListener('click', (event: Event)=> {
     dayTime = 'nightTime'
   }
 })
-// switchBtn.forEach(item => {
-//   item.addEventListener('click', () => {
-//     if (item.classList.contains('switch-one')) {
-//       item.classList.toggle('switch-on')
 
-//     } else if (item.classList.contains('switch-two')) {
-//       item.classList.toggle('switch-on')
-//     }else if (item.classList.contains('switch-three')) {
-//       item.classList.toggle('switch-on')
-//     }
-//   })
-// })
+ switchBtn.forEach(item => {
+   item.addEventListener('click', () => {
+     if (item.classList.contains('switch-one')) {
+       item.classList.toggle('switch-on')
+
+     } else if (item.classList.contains('switch-two')) {
+      item.classList.toggle('switch-on')
+     }else if (item.classList.contains('switch-three')) {
+      item.classList.toggle('switch-on')
+    }
+  })
+})
+}
 
 export { gameVolume, dayTime};
+
+}
 
