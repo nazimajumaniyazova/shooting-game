@@ -176,6 +176,10 @@ body {
   color: #000;
 }
 
+.header-text{
+  color: rgb(255, 238, 0);
+}
+
 .header-user{
   width: 30px;
   height: 30px;
@@ -185,7 +189,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 .header-user.active{
   background: url(./catalog-img/userActive.png);
@@ -196,7 +200,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 
 /*----------------------login----------*/
@@ -207,7 +211,7 @@ body {
   align-items: center;
   height: 40px;
   width: 100%;
-  background: #fff;
+  background: rgb(255, 251, 0, 0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -223,7 +227,7 @@ body {
   background-size: cover;
   margin: 0 15px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 0;
 }
 
 /*-----------------login---------------*/
@@ -321,4 +325,67 @@ body {
 }
 .condition-password.active{
   display: none;
+}
+
+
+/*------------------footer----------------*/
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background: rgb(255, 251, 0, 0.3);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #000;
+  padding: 0 15px;
+}
+
+.rs-school{
+  width: 80px;
+  height: 30px;
+  background: url(./catalog-img/rs_school_js.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.git-img{
+  width: 20px;
+  height: 20px;
+  background: url(./catalog-img/git.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.git{
+  display: flex;
+}
+
+.git-nazima,
+.git-ayur,
+.git-anton{
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.git-nazima-text,
+.git-ayur-text,
+.git-anton-text,
+.year{
+  text-decoration: none;
+  color: rgb(255, 238, 0);
+}
+
+.year{
+margin-right: 120px;
+}
+
+.git-img{
+  margin-right: 2px;
 }

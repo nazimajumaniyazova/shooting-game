@@ -1,5 +1,9 @@
 /*----------------------окно подсказок------------------*/
 .wrapper-blok-back{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   background: url(../catalog-img/fon.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -12,6 +16,13 @@
   width: 100%;
   height: 100vh;
   color: black;
+}
+
+.wrapper-blok-help.active{
+  display: none;
+}
+.wrapper-blok-help-copy.active{
+  display: none;
 }
 
 .colum-block{
@@ -36,17 +47,22 @@
 
 .col{
   width: 100%;
-  height: 25%;
+  height: 30%;
   /* border: 1px solid #fff; */
 }
 
 .col1-2{
-  height: 50%;
+  display: flex;
+  height: 45%;
   text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .fon-text-game{
 position: relative;
+top: -15px;
 z-index: 15;
 }
 
@@ -82,11 +98,6 @@ right: 1%;
   z-index: 10;
 }
 
-.fon-text-game{
-position: relative;
-top: -40px;
-}
-
 .col-copy{
   background: rgb(0, 0, 0, 0.5);
 }
@@ -116,6 +127,7 @@ right: 50px;
 
 /*---block-game-----*/
 .block-help{
+  display: block;
   position: absolute;
   z-index: 6;
   bottom: 0;
@@ -130,4 +142,8 @@ right: 50px;
   background-size: cover;
   margin: 10px;
   cursor: pointer;
+}
+
+.block-help.active{
+  display: none;
 }
