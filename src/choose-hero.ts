@@ -3,6 +3,7 @@
 // import {Player} from "./utils";
 import {createHTMLElement} from './utils'
 import { Game } from "./game/Game";
+// import { gameVolume } from "./type/settingModal";
 // renderHeroChoisePage();
 
 document.body.addEventListener('keydown', chooseHero);

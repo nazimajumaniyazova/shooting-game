@@ -143,6 +143,7 @@
             align-items: center;
             color: #fff;
             margin: 5px 10px;
+            justify-content: space-between;
           }
   
           .settings-text{
