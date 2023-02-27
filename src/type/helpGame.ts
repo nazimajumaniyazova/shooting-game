@@ -1,3 +1,5 @@
+import { chooseHero } from "../choose-hero";
+
 export const blockHelp = () => {
   const sactionHelp = <HTMLElement>document.createElement('div');
   sactionHelp.classList.add('block-help')
@@ -140,6 +142,7 @@ export function clickBlockHelp() {
         helpEmeny.style.cursor = 'auto';
         helpEnemyText.style.display = 'none'
       } else if (item.classList.contains('help-settings') && helpSettings.dataset.click === 'true') {
+        document.body.addEventListener('keydown', chooseHero);
         helpSettings.style.background = 'rgb(0, 0, 0, 0.5)'
         helpEmeny.dataset.click = 'false'
         helpSettings.style.cursor = 'auto';
