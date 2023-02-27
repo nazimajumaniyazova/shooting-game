@@ -1,6 +1,6 @@
 import {createUser, getUsers} from './api'
 
-const renderHeader = () => {
+export const renderHeader = () => {
   const block = `
   <div class="header-text">Hello</div>
   <div class="header-user"></div>
@@ -213,3 +213,15 @@ formBtn.addEventListener('click', async (event) => {
     }
   }
 })
+
+export function nameUser() {
+  const headerText = document.querySelector('.header-text') as HTMLElement;
+  if (localStorage.getItem('user')) {
+    const a = localStorage.getItem('user')
+    headerText.innerHTML = `Helo: ${a}`
+    wrapperLogin.classList.add('active')
+    headerUser?.classList.add('active')
+  } 
+  
+}
+nameUser()

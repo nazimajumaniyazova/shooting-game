@@ -2,7 +2,7 @@ import { chooseHero } from "./choose-hero";
 import { renderHeroChoisePage } from "./render";
 import { wrapperBlokHelp, blockHelp, wrapperBlokHelpCopy, clickBlockHelp } from './type/helpGame';
 import { renderSettings, wrapperSetting } from "./type/settingModal"
-
+import { renderHeader } from "./type/loginModal"
 
 const container = document.querySelector('.container') as HTMLElement;
 welcome()
@@ -43,10 +43,13 @@ function welcome() {
   window.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key === 'Enter' && !isTypingStoryActive) {
       onStartBtnClick()
+      renderHeader()
       isTypingStoryActive = true;
       window.removeEventListener('keydown', onSkipBtnClick)
       const blockHelp = document.querySelector('.block-help') as HTMLElement
-      blockHelp.classList.add('active')
+      if (blockHelp) {
+        blockHelp.classList.add('active')
+      }
     }
     return;
   });
@@ -154,7 +157,7 @@ export async function skipStory(e: KeyboardEvent) {
   }
 }
 
-function onSkipBtnClick() {
+export function onSkipBtnClick() {
   container.remove();
   renderHeroChoisePage()
 }
