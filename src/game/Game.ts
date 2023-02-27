@@ -5,6 +5,7 @@ import {UI} from './UI'
 import { Enemy1, Enemy2, Enemy3 } from './Enemy'
 import { Projectile } from './Projectile';
 import { smokeExplostion, fireExplostion} from './Explostion'
+import sound from '../sounds/pain-sound.wav';
 export class Game {
   background: Background;
   player: Player;
@@ -29,6 +30,7 @@ export class Game {
   lives: number;
   chosedHero: string;
   explotions: Array<smokeExplostion |  fireExplostion>
+  playerEnemyCollisionSound: HTMLAudioElement;
   constructor(width: number, height: number, chosedHero: string) {
     this.chosedHero = chosedHero
     this.width = width;
@@ -44,7 +46,7 @@ export class Game {
     this.ammoTimer = 0
     this.ammoInterval = 200;
     this.enemyTimer = 0
-    this.enemyInterval = 1500 // добавляем врагов каждые 1мс
+    this.enemyInterval = 15000 // добавляем врагов каждые 1мс
 
     this.gameOver = false
     this.score = 0
@@ -54,6 +56,8 @@ export class Game {
     this.speed = 1;
     this.explotions = []
     this.lives = 5;
+    this.playerEnemyCollisionSound = new Audio()
+    this.playerEnemyCollisionSound.src = sound
   }
   update(deltaTime: number) {
 
@@ -79,6 +83,8 @@ export class Game {
     this.enemies.forEach(enemy => {
       enemy.update()
       if(this.checkCollision(this.player, enemy)) {
+        this.playerEnemyCollisionSound.play()
+        this.addExplotion(enemy)
         enemy.markedForDeletion = true;
         this.lives--;
         if(this.lives <=0){
@@ -161,7 +167,8 @@ export class Game {
     const randomize = Math.random();
     if( randomize < 0.3){
       this.enemies.push(new Enemy1(this))
-    }else if (randomize < 0.6){
+    }
+    else if (randomize < 0.6){
       this.enemies.push(new Enemy2(this))
     } else {
       this.enemies.push(new Enemy3(this))
