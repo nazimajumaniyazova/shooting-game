@@ -16,15 +16,11 @@ const renderSettings = () => {
     </div>
     <div class="settings-one setting">
       <span class="settings-text">Day time</span>
-      <div class="switch-btn switch-one"></div>
+      <div class="switch-btn switch-one switch-on"></div>
     </div>
     <div class="settings-two setting">
       <span class="settings-text">Night time</span>
       <div class="switch-btn switch-two"></div>
-    </div>
-    <div class="settings-three setting">
-      <span class="settings-text">Settings №3</span>
-      <div class="switch-btn switch-three"></div>
     </div>
   </div>
 `
@@ -45,12 +41,12 @@ const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageEleme
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
-//const switchBtn = document.querySelectorAll('.switch-btn');
+const switchBtn = document.querySelectorAll('.switch-btn');
 const modalSettings = document.querySelector('.wrapper-modal__settings')
 audio.volume = 0.3
 
 let gameVolume = volume.value;
-
+let dayTime = 'dayTime';
 volume.addEventListener('input', () => {
   const img = document.querySelector('.reg-volume') as HTMLImageElement;
   const data = volume.value;
@@ -91,9 +87,21 @@ modalSettings?.addEventListener('click', (event: Event)=> {
   console.log(setting)
   if(setting.classList.contains('settings-one')){
     setting.querySelector('.switch-one')?.classList.toggle('switch-on')
+    switchBtn.forEach(item => {
+      if (item.classList.contains('switch-two')) {
+        item.classList.remove('switch-on')
+      } 
+    })
+    dayTime = 'dayTime'
   }
   if(setting.classList.contains('settings-two')){
-    setting.querySelector('.switch-one')?.classList.toggle('switch-on')
+    setting.querySelector('.switch-two')?.classList.toggle('switch-on')
+    switchBtn.forEach(item => {
+      if (item.classList.contains('switch-one')) {
+        item.classList.remove('switch-on')
+      } 
+    })
+    dayTime = 'nightTime'
   }
 })
 // switchBtn.forEach(item => {
@@ -109,5 +117,5 @@ modalSettings?.addEventListener('click', (event: Event)=> {
 //   })
 // })
 
-export { gameVolume};
+export { gameVolume, dayTime};
 
