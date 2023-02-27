@@ -1,3 +1,4 @@
+import { chooseHero } from "./choose-hero";
 import { renderHeroChoisePage } from "./render";
 import { wrapperBlokHelp, blockHelp, wrapperBlokHelpCopy, clickBlockHelp } from './type/helpGame';
 import { renderSettings, wrapperSetting } from "./type/settingModal"
@@ -109,11 +110,34 @@ function displaySkipBtn() {
   skipBtn.innerHTML = 'Skip';
   container.append(skipBtn);
 
-
-  const footer = document.querySelector('.footer')
   
+  
+  
+  skipBtn.addEventListener('click', skipStoryM);
+  
+  document.body.addEventListener('keydown', skipStory);
+}
 
-  skipBtn.addEventListener('click', async () => {
+export async function skipStoryM() {
+  const footer = document.querySelector('.footer')
+  onSkipBtnClick()
+  blockHelp()
+  renderSettings()
+  footer?.remove()
+  // header?.remove()
+  const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
+  elementBlockHelp.addEventListener('click', () => {
+  document.body.removeEventListener('keydown', chooseHero);
+  wrapperBlokHelp();
+  wrapperBlokHelpCopy();
+  clickBlockHelp();   
+  })
+  wrapperSetting()
+}
+
+export async function skipStory(e: KeyboardEvent) {
+  const footer = document.querySelector('.footer')
+  if (e.key === 'Enter') {
     onSkipBtnClick()
     blockHelp()
     renderSettings()
@@ -121,12 +145,13 @@ function displaySkipBtn() {
     // header?.remove()
     const elementBlockHelp = document.querySelector('.block-help') as HTMLElement
     elementBlockHelp.addEventListener('click', () => {
+    document.body.removeEventListener('keydown', chooseHero);
     wrapperBlokHelp();
     wrapperBlokHelpCopy();
     clickBlockHelp()
     })
     wrapperSetting()
-  })
+  }
 }
 
 function onSkipBtnClick() {

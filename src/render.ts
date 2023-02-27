@@ -1,6 +1,8 @@
+import { skipStory } from "./starting";
 import { createHTMLElement, getPlayerData, Hero } from "./utils";
 
 export function renderHeroChoisePage() {
+  document.body.removeEventListener('keydown',skipStory)
   const gameField = createHTMLElement('div', 'game-field');
   const container = createHTMLElement('div', 'heroes');
 
