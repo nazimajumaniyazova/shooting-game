@@ -8,6 +8,7 @@ body {
   background-color: #1E1E1E;
   color: #fff;
   font-family: 'Bangers', cursive;
+  overflow: hidden;
 }
 .btn {
   border: none;

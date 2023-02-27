@@ -34,6 +34,7 @@ export const renderSettings = () => {
   document.body.appendChild(sactionSettings);
 }
 
+let gameVolume: number;
 export function wrapperSetting() {
   const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
@@ -47,6 +48,8 @@ const headerUser = document.querySelector('.header-user')
 
 audio.volume = 0.3
 
+gameVolume = +volume.value;
+
 let gameVolume = volume.value;
 let dayTime = 'dayTime';
 volume.addEventListener('input', () => {
@@ -58,7 +61,7 @@ volume.addEventListener('input', () => {
   } else {
     img.src = "./catalog-img/volume.png"
   }
-  gameVolume = volume.value
+  gameVolume = +volume.value
 })
 
   btnSettings?.addEventListener('click', () => {
