@@ -27,6 +27,10 @@ export function chooseHero(e: KeyboardEvent) {
     document.querySelector('.game-field')?.remove()
     console.log(chosedHero)
     gameAnimation(chosedHero);
+    const blockHelp = document.querySelector('.block-help') as HTMLElement
+    if (blockHelp) {
+      blockHelp.remove()
+    }
   }
 }
 
