@@ -35,6 +35,7 @@ export const renderSettings = () => {
 }
 
 let gameVolume: number;
+let dayTime = 'dayTime';
 export function wrapperSetting() {
   const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
@@ -49,9 +50,6 @@ const headerUser = document.querySelector('.header-user')
 audio.volume = 0.3
 
 gameVolume = +volume.value;
-
-let gameVolume = volume.value;
-let dayTime = 'dayTime';
 volume.addEventListener('input', () => {
   const img = document.querySelector('.reg-volume') as HTMLImageElement;
   const data = volume.value;
