@@ -4,6 +4,7 @@ import { wrapperBlokHelp, blockHelp, wrapperBlokHelpCopy, clickBlockHelp } from 
 import { renderSettings, wrapperSetting } from "./type/settingModal"
 // import { renderHeader } from "./type/loginModal"
 
+
 const container = document.querySelector('.container') as HTMLElement;
 welcome()
 function welcome() {

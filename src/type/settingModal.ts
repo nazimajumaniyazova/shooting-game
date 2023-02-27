@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import sound from '../sounds/one.wav';
 export const renderSettings = () => {
   const html = `
   <div class="wrapper-modal__settings">
     <div class="player">
-      <audio class="audio" src="./catalog-img/audio/one.mp3"></audio>
+      <audio class="audio" src="${sound}"></audio>
       <div class="box-player-wrapper">
         <div class="box-player">
           <div class="btn play-pause"><img class="img-play-pause" src="./catalog-img/play.png" alt=""></div>
@@ -16,15 +17,11 @@ export const renderSettings = () => {
     </div>
     <div class="settings-one setting">
       <span class="settings-text">Day time</span>
-      <div class="switch-btn switch-one"></div>
+      <div class="switch-btn switch-one switch-on"></div>
     </div>
     <div class="settings-two setting">
       <span class="settings-text">Night time</span>
       <div class="switch-btn switch-two"></div>
-    </div>
-    <div class="settings-three setting">
-      <span class="settings-text">Settings №3</span>
-      <div class="switch-btn switch-three"></div>
     </div>
   </div>
 `
@@ -39,6 +36,7 @@ export const renderSettings = () => {
 }
 
 let gameVolume: number;
+let dayTime = 'dayTime';
 export function wrapperSetting() {
   const btnSettings = document.querySelector('.settings') as HTMLElement
 // const player = document.querySelector('.player') as HTMLElement
@@ -53,7 +51,6 @@ const headerUser = document.querySelector('.header-user')
 audio.volume = 0.3
 
 gameVolume = +volume.value;
-
 volume.addEventListener('input', () => {
   const img = document.querySelector('.reg-volume') as HTMLImageElement;
   const data = volume.value;
@@ -90,31 +87,81 @@ imgPlayPause.addEventListener('click', () => {
   }
   
 })
-
+const message = document.createElement('p') as HTMLElement
+message.classList.add('modal-message')
+message.innerHTML = 'You can no change game mode when game is active'
 modalSettings?.addEventListener('click', (event: Event)=> {
-  const eventTartget = event.target as HTMLElement
-  const setting = eventTartget.closest('.setting')!
-  console.log(setting)
-  if(setting.classList.contains('settings-one')){
-    setting.querySelector('.switch-one')?.classList.toggle('switch-on')
-  }
-  if(setting.classList.contains('settings-two')){
-    setting.querySelector('.switch-one')?.classList.toggle('switch-on')
-  }
-})
-
- switchBtn.forEach(item => {
-   item.addEventListener('click', () => {
-     if (item.classList.contains('switch-one')) {
-       item.classList.toggle('switch-on')
-
-     } else if (item.classList.contains('switch-two')) {
-      item.classList.toggle('switch-on')
-     }else if (item.classList.contains('switch-three')) {
-      item.classList.toggle('switch-on')
+  const canvasElem = document.querySelector('canvas');
+  if(canvasElem) {
+    if(modalSettings.querySelector('.modal-message')){
+      return
+    }else{
+      modalSettings.append(message)
     }
-  })
+  }
+  const eventTartget = event.target as HTMLElement
+  const setting = eventTartget.closest('.setting') as HTMLElement
+  if(setting?.classList.contains('settings-one')){
+    if(canvasElem){
+      return
+    }
+    const settingSwitch = setting.querySelector('.switch-one')!
+    if(settingSwitch.classList.contains('switch-on')){
+      settingSwitch.classList.remove('switch-on');
+      switchBtn.forEach(item => {
+        if (item.classList.contains('switch-two')) {
+          item.classList.add('switch-on')
+        } 
+      })
+      dayTime = 'nightTime'
+    }else{
+      settingSwitch.classList.add('switch-on');
+      switchBtn.forEach(item => {
+        if (item.classList.contains('switch-two')) {
+          item.classList.remove('switch-on')
+        } 
+      })
+      dayTime = 'dayTime'
+    }
+  }
+  if(setting?.classList.contains('settings-two')){
+    if(canvasElem){
+      return
+    }
+    const settingSwitch = setting.querySelector('.switch-two')!
+    if(settingSwitch.classList.contains('switch-on')){
+      settingSwitch.classList.remove('switch-on');
+      switchBtn.forEach(item => {
+        if (item.classList.contains('switch-one')) {
+          item.classList.add('switch-on')
+        } 
+      })
+      dayTime = 'dayTime' 
+    }else{
+      settingSwitch.classList.add('switch-on');
+      switchBtn.forEach(item => {
+        if (item.classList.contains('switch-one')) {
+          item.classList.remove('switch-on')
+        } 
+      })
+      dayTime = 'nightTime'
+    }
+  }
 })
 
+//  switchBtn.forEach(item => {
+//    item.addEventListener('click', () => {
+//      if (item.classList.contains('switch-one')) {
+//        item.classList.toggle('switch-on')
+
+//      } else if (item.classList.contains('switch-two')) {
+//       item.classList.toggle('switch-on')
+//      }else if (item.classList.contains('switch-three')) {
+//       item.classList.toggle('switch-on')
+//     }
+//   })
+//  })
 }
-export { gameVolume};
+
+export { gameVolume, dayTime};
+
