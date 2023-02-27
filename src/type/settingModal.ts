@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 const renderSettings = () => {
   const html = `
   <div class="wrapper-modal__settings">
@@ -13,15 +14,15 @@ const renderSettings = () => {
         </div>
       </div>
     </div>
-    <div class="settings-one">
-      <span class="settings-text">Settings №1</span>
+    <div class="settings-one setting">
+      <span class="settings-text">Day time</span>
       <div class="switch-btn switch-one"></div>
     </div>
-    <div class="settings-two">
-      <span class="settings-text">Settings №2</span>
+    <div class="settings-two setting">
+      <span class="settings-text">Night time</span>
       <div class="switch-btn switch-two"></div>
     </div>
-    <div class="settings-three">
+    <div class="settings-three setting">
       <span class="settings-text">Settings №3</span>
       <div class="switch-btn switch-three"></div>
     </div>
@@ -44,8 +45,8 @@ const imgPlayPause = document.querySelector('.img-play-pause') as HTMLImageEleme
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 const volume = document.querySelector('.volmue') as HTMLInputElement;
 const btnPlay = document.querySelector('.play-pause') as HTMLElement
-const switchBtn = document.querySelectorAll('.switch-btn');
-
+//const switchBtn = document.querySelectorAll('.switch-btn');
+const modalSettings = document.querySelector('.wrapper-modal__settings')
 audio.volume = 0.3
 
 let gameVolume = volume.value;
@@ -84,17 +85,29 @@ imgPlayPause.addEventListener('click', () => {
   
 })
 
-switchBtn.forEach(item => {
-  item.addEventListener('click', () => {
-    if (item.classList.contains('switch-one')) {
-      item.classList.toggle('switch-on')
-    } else if (item.classList.contains('switch-two')) {
-      item.classList.toggle('switch-on')
-    }else if (item.classList.contains('switch-three')) {
-      item.classList.toggle('switch-on')
-    }
-  })
+modalSettings?.addEventListener('click', (event: Event)=> {
+  const eventTartget = event.target as HTMLElement
+  const setting = eventTartget.closest('.setting')!
+  console.log(setting)
+  if(setting.classList.contains('settings-one')){
+    setting.querySelector('.switch-one')?.classList.toggle('switch-on')
+  }
+  if(setting.classList.contains('settings-two')){
+    setting.querySelector('.switch-one')?.classList.toggle('switch-on')
+  }
 })
+// switchBtn.forEach(item => {
+//   item.addEventListener('click', () => {
+//     if (item.classList.contains('switch-one')) {
+//       item.classList.toggle('switch-on')
+
+//     } else if (item.classList.contains('switch-two')) {
+//       item.classList.toggle('switch-on')
+//     }else if (item.classList.contains('switch-three')) {
+//       item.classList.toggle('switch-on')
+//     }
+//   })
+// })
 
 export { gameVolume};
 
