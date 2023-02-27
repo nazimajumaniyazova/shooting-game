@@ -48,6 +48,7 @@ const switchBtn = document.querySelectorAll('.switch-btn');
 
 audio.volume = 0.3
 
+let gameVolume = volume.value;
 
 volume.addEventListener('input', () => {
   const img = document.querySelector('.reg-volume') as HTMLImageElement;
@@ -58,6 +59,7 @@ volume.addEventListener('input', () => {
   } else {
     img.src = "./catalog-img/volume.png"
   }
+  gameVolume = volume.value
 })
 
 btnSettings?.addEventListener('click', () => {
@@ -94,5 +96,5 @@ switchBtn.forEach(item => {
   })
 })
 
-export { };
+export { gameVolume};
 
