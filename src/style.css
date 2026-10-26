@@ -1,0 +1,392 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #1E1E1E;
+  color: #fff;
+  font-family: 'Bangers', cursive;
+  overflow: hidden;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container-top {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+.container-bottom {
+  height: 50vh;
+}
+.welcome-text {
+ font-size: 4rem;
+ animation-name: elementAppearing;
+ animation-duration: 2s;
+}
+.game-name{
+  font-size: 4rem;
+  text-transform: uppercase;
+  animation-name: elementAppearing;
+  animation-duration: 2s;
+}
+.logo{
+  width: 580px;
+  animation-name: getBigger;
+  animation-duration: 2s;
+}
+.start-btn {
+  font-family: 'Alfa Slab One';
+  color: #fffc00;
+
+  font-size: 2em;
+  cursor: pointer;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #fffc00;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  margin-bottom: 20px;
+}
+
+.press-enter {
+ color: #fffc00;
+ display: none;
+ text-align: center;
+ font-family: 'Alfa Slab One';
+ letter-spacing: 1px;
+}
+.start-btn.display-on{
+  display: block;
+}
+.press-enter.display-on{
+  display: block;
+}
+@keyframes elementAppearing{
+  from {
+    font-size: 0;
+    opacity: 0;
+  }
+  to {
+    font-size: 4rem;
+    opacity: 1;
+  }
+}
+@keyframes getBigger{
+  from {
+    width: 100px;
+  }
+  to {
+    width: 580px;
+  }
+}
+#canvas1 {
+  border: 1px solid #000;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+/* Typing Style */
+.sentence{
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Alfa Slab One';
+  letter-spacing: 1px;
+}
+.typing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.typing-container__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 42px;
+  margin-left: 8px;
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+}
+/* .typing-cursor{
+  background-color: white;
+  animation: blink .6s linear infinite alternate;
+} */
+@keyframes blink {
+  0% {opacity: 1;}
+  40% {opacity: 1;}
+  60% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.skip-btn {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 100px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-family: 'Alfa Slab One';
+}
+
+/*--------------------header---------------------------------*/
+.header{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000;
+}
+
+.header-text{
+  color: rgb(255, 238, 0);
+}
+
+.header-user{
+  width: 30px;
+  height: 30px;
+  background: url(./catalog-img/user.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 15px;
+  cursor: pointer;
+  z-index: 0;
+}
+.header-user.active{
+  background: url(./catalog-img/userActive.png);
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 15px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+/*----------------------login----------*/
+/*--------------------header---------------------------------*/
+.header{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background: rgb(255, 251, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000;
+}
+
+.header-user{
+  width: 30px;
+  height: 30px;
+  background: url(./catalog-img/user.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 15px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+/*-----------------login---------------*/
+.wrapper-login{
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(10 10 10 / 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-login.active{
+  display: none;
+}
+
+.login{
+  padding: 1%;
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 300px;
+  /* background-color: #a5abb1; */
+  background: linear-gradient(90deg,rgb(148, 149, 160) 6%,rgb(172, 173, 185) 34%,rgb(193, 194, 207) 100%);
+  z-index: 10;
+  position: absolute;
+  box-shadow:
+  0 1px 4px rgba(0, 0, 0, .3),
+  -23px 0 20px -23px rgba(0, 0, 0, .8),
+  23px 0 20px -23px rgba(0, 0, 0, .8),
+  0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.sign{
+  display: flex;
+}
+.sign-in,
+.sign-on{
+  cursor: pointer;
+}
+.sign-in.active,
+.sign-on.active{
+  color: rgb(105, 221, 51);
+}
+
+.sign-on{
+  margin-left: 20px;
+}
+
+.wrapper__form-fiel,
+.form-field{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field input{
+  /* background-color: rgb(221, 217, 217); */
+  width: 100%;
+  border: 1px solid #000;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 0.4rem;
+  outline: none;
+  margin-top: 2px;
+}
+.form-field label{
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #000;
+  font-size: 12px;
+}
+
+.form__btn{
+  padding: 4px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0, 129, 161, 0.5);
+  transition: 0.4s;
+  margin: auto;
+  color: #fff;
+  padding: 7px 25px;
+  margin-top: 10px;
+}
+
+.form__btn:hover{
+  background: rgba(0, 204, 255, 0.5)
+}
+
+.condition-name.active{
+  display: none;
+}
+.condition-password.active{
+  display: none;
+}
+
+
+/*------------------footer----------------*/
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background: rgb(255, 251, 0, 0.3);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #000;
+  padding: 0 15px;
+}
+
+.rs-school{
+  width: 80px;
+  height: 30px;
+  background: url(./catalog-img/rs_school_js.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.git-img{
+  width: 20px;
+  height: 20px;
+  background: url(./catalog-img/git.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.git{
+  display: flex;
+}
+
+.git-nazima,
+.git-ayur,
+.git-anton{
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.git-nazima-text,
+.git-ayur-text,
+.git-anton-text,
+.year{
+  text-decoration: none;
+  color: rgb(255, 238, 0);
+}
+
+.year{
+margin-right: 120px;
+}
+
+.git-img{
+  margin-right: 2px;
+}
